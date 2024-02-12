@@ -42,9 +42,20 @@ jobs:
         with:
           python-version: 3.11  # Replace 'x' with the desired Python version
 
-      - name: Run InvisibilityCloak
+      - name: Test InvisibilityCloak
         run: |
           python D:\\a\\Rubeus\\Rubeus\\InvisibilityCloak.py
+
+      - name: Run InvisibilityCloak
+        run: |
+          python D:\\a\\Rubeus\\Rubeus\\InvisibilityCloak.py -d D:\\a\\Rubeus\\Rubeus\\Rubeus\\bin\\Release\\Rubeus.exe -n "TotallyLegitTool" -m base64
+
+      - name: Debug Information
+        run: |
+          Get-ChildItem -Recurse
+          Get-Location
+
+
 
 
 
