@@ -1,0 +1,36 @@
+name: obfuscationBuilder
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build_and_release:
+    runs-on: windows-2019
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Set up .NET 7
+        uses: actions/setup-dotnet@v2
+        with:
+          dotnet-version: '7.0.101'
+
+      - name: Build
+        run: |
+          dotnet build --configuration Release
+
+      - name: Debug Information
+        run: |
+          Get-ChildItem -Recurse
+          Get-Location
+
+      - name: Checkout InvisibilityCloak
+        uses: actions/checkout@v2
+        with:
+           repository: rsecurity12/InvisibilityCloak
+
+
+
