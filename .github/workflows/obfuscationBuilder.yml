@@ -2,8 +2,8 @@ name: obfuscationBuilder
 
 on:
   push:
-    branches:
-      - '*'
+    paths:
+      - 'obfuscationBuilder.yml'
   
 jobs:
   build_and_release:
@@ -42,9 +42,9 @@ jobs:
         with:
           python-version: 3.11  # Replace 'x' with the desired Python version
 
-      - name: Run Python Script
+      - name: Run InvisibilityCloak
         run: |
-          python -V  # Print Python version for verification
-          # Add your Python scripts or commands here
+          python D:\\a\\Rubeus\\Rubeus\\InvisibilityCloak.py
+
 
 
