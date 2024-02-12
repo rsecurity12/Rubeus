@@ -1,7 +1,9 @@
 name: obfuscationBuilder
 
 on:
-  workflow_dispatch:
+  push:
+    branches:
+      - '*'
   
 jobs:
   build_and_release:
