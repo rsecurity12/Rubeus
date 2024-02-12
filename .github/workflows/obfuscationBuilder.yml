@@ -37,4 +37,14 @@ jobs:
           Get-ChildItem -Recurse
           Get-Location
 
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.11  # Replace 'x' with the desired Python version
+
+      - name: Run Python Script
+        run: |
+          python -V  # Print Python version for verification
+          # Add your Python scripts or commands here
+
 
