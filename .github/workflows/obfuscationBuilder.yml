@@ -2,8 +2,8 @@ name: obfuscationBuilder
 
 on:
   push:
-    paths:
-      - 'obfuscationBuilder.yml'
+    branches:
+      - '*'
   
 jobs:
   build_and_release:
