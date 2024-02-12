@@ -59,7 +59,7 @@ jobs:
 
       - name: Run InvisibilityCloak
         run: |
-          python D:\\a\\Rubeus\\Rubeus\\InvisibilityCloak.py -d D:\\a\\Rubeus\\Rubeus\\Rubeus\\bin\\Release\\Rubeus.exe -n "TotallyLegitTool" -m base64
+          python D:\\a\\Rubeus\\Rubeus\\InvisibilityCloak.py -d D:\\a\\Rubeus\\Rubeus\\Rubeus.exe -n "TotallyLegitTool" -m base64
 
       - name: Debug Information
         run: |
