@@ -27,10 +27,21 @@ jobs:
           Get-ChildItem -Recurse
           Get-Location
 
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: rubeus-artifacts
+          path: Rubeus\\bin\\Release
+
       - name: Checkout InvisibilityCloak
         uses: actions/checkout@v2
         with:
            repository: rsecurity12/InvisibilityCloak
+
+      - name: Download Artifacts
+        uses: actions/download-artifact@v2
+        with:
+          name: rubeus-artifacts
 
       - name: Debug Information
         run: |
