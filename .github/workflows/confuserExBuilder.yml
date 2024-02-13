@@ -15,6 +15,9 @@ jobs:
         with:
            repository: rsecurity12/ConfuserEx
 
+      - name: Test ConfuserEx
+        run:  D:\\a\\Rubeus\\Rubeus\\Confuser.CLI.exe
+
       - name: Debug Information
         run: |
           Get-ChildItem -Recurse
