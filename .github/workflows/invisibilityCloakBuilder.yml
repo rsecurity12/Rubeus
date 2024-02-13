@@ -72,7 +72,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: "D:\\a\\Rubeus\\Rubeus\\TotallyLegitTool\\obj\\Release\\InvisibilityCloakRubeus.exe"
+          asset_path: "D:\\a\\Rubeus\\Rubeus\\InvisibilityCloakRubeus\\obj\\Release\\InvisibilityCloakRubeus.exe"
           asset_name: InvisibilityCloakRubeus.exe
           asset_content_type: application/octet-stream
           
