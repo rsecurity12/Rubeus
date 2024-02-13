@@ -20,13 +20,15 @@ jobs:
         uses: actions/setup-dotnet@v2
         with:
           dotnet-version: '7.0.101'
-
-      - name: Build
-        run: |
-          dotnet build --configuration Release
           
       - name: Debug Information
         run: |
           Get-ChildItem -Recurse
           Get-Location
+
+      - name: Build
+        run: |
+          dotnet build --configuration Release
+          
+
           
