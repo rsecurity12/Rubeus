@@ -45,15 +45,24 @@ jobs:
       - name: Test InvisibilityCloak
         run: |
           python D:\\a\\Rubeus\\Rubeus\\InvisibilityCloak.py
-          
-      - name: Build
+
+      - name: Run InvisibilityCloak
         run: |
-          dotnet build --configuration Release
+          python D:\\a\\Rubeus\\Rubeus\\InvisibilityCloak.py -d D:\\a\\Rubeus\\Rubeus -n "TotallyLegitTool" -m base64
 
       - name: Debug Information
         run: |
           Get-ChildItem -Recurse
           Get-Location
+          
+#      - name: Build
+#        run: |
+#          dotnet build --configuration Release
+
+#      - name: Debug Information
+#        run: |
+#          Get-ChildItem -Recurse
+#          Get-Location
 
 
 
