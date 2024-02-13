@@ -28,6 +28,6 @@ jobs:
 
       - name: Build Solution
         run: |
-          cd D:\a\Rubeus\Rubeus
+          cd D:\a\Rubeus\Rubeus &&
           dotnet build --configuration Release -p:SolutionFileName=Confuser2.sln
           
