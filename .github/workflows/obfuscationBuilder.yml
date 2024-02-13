@@ -10,13 +10,37 @@ jobs:
     runs-on: windows-2019
 
     steps:
-      - name: Checkout Repository
+    
+      - name: Checkout InvisibilityCloak
         uses: actions/checkout@v2
+        with:
+           repository: rsecurity12/InvisibilityCloak
 
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: invisibilitycloak-artifacts
+          path: InvisibilityCloak
+
+      - name: Checkout Rubeus
+        uses: actions/checkout@v2
+        with:
+           repository: rsecurity12/Rubeus
+           
       - name: Set up .NET 7
         uses: actions/setup-dotnet@v2
         with:
           dotnet-version: '7.0.101'
+          
+      - name: Download Artifacts
+        uses: actions/download-artifact@v2
+        with:
+          name: invisibilitycloak-artifacts
+
+      - name: Debug Information
+        run: |
+          Get-ChildItem -Recurse
+          Get-Location
 
       - name: Build
         run: |
@@ -27,44 +51,10 @@ jobs:
           Get-ChildItem -Recurse
           Get-Location
 
-      - name: Upload Artifacts
-        uses: actions/upload-artifact@v2
-        with:
-          name: rubeus-artifacts
-          path: Rubeus
-
-      - name: Checkout InvisibilityCloak
-        uses: actions/checkout@v2
-        with:
-           repository: rsecurity12/InvisibilityCloak
-
-      - name: Download Artifacts
-        uses: actions/download-artifact@v2
-        with:
-          name: rubeus-artifacts
-
-      - name: Debug Information
-        run: |
-          Get-ChildItem -Recurse
-          Get-Location
-
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
           python-version: 3.11  # Replace 'x' with the desired Python version
-
-      - name: Test InvisibilityCloak
-        run: |
-          python D:\\a\\Rubeus\\Rubeus\\InvisibilityCloak.py
-
-      - name: Run InvisibilityCloak
-        run: |
-          python D:\\a\\Rubeus\\Rubeus\\InvisibilityCloak.py -d D:\\a\\Rubeus\\Rubeus -n "TotallyLegitTool" -m base64
-
-      - name: Debug Information
-        run: |
-          Get-ChildItem -Recurse
-          Get-Location
 
 
 
