@@ -16,7 +16,7 @@ jobs:
            repository: rsecurity12/ConfuserEx
 
       - name: Test ConfuserEx
-        run:  D:\\a\\Rubeus\\Rubeus\\Confuser.exe
+        run:  D:\\a\\Rubeus\\Rubeus\\ConfuserEx.exe
 
       - name: Debug Information
         run: |
