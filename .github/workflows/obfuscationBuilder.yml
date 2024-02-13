@@ -25,7 +25,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: invisibilitycloak-artifacts
-          path:  D:\a\Rubeus\Rubeus\InvisibilityCloak
+          path:  D:\\a\\Rubeus\\Rubeus\\InvisibilityCloak\\InvisibilityCloak.py
 
       - name: Checkout Rubeus
         uses: actions/checkout@v2
