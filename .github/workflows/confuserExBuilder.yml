@@ -13,9 +13,7 @@ jobs:
       - name: Checkout ConfuserEx
         uses: actions/checkout@v2
         with:
-           repository: PwCBELabs/obfuscation
-           ref: master
-           token: ${{ secrets.GH_PAT }}
+           repository: rsecurity12/ConfuserEx
 
       - name: Debug Information
         run: |
