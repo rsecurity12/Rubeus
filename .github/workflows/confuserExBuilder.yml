@@ -10,24 +10,34 @@ jobs:
     runs-on: windows-2019
 
     steps:
-    
       - name: Checkout ConfuserEx
         uses: actions/checkout@v2
         with:
-           repository: rsecurity12/confuserEx
-           
-      - name: Set up .NET 7
-        uses: actions/setup-dotnet@v2
-        with:
-          dotnet-version: '7.0.101'
-          
+           repository: PwCBELabs/obfuscation
+           ref: master
+           token: ${{ secrets.GH_PAT }}
+
       - name: Debug Information
         run: |
           Get-ChildItem -Recurse
           Get-Location
 
-      - name: Build Solution
-        run: |
-          cd D:\\a\\Rubeus\\Rubeus &&
-          dotnet build --configuration Release -p:SolutionFileName=Confuser2.sln
-          
+#    steps:
+#    
+#      - name: Checkout ConfuserEx
+#        uses: actions/checkout@v2
+#        with:
+#           repository: rsecurity12/confuserEx
+#           
+#      - name: Set up .NET 7
+#        uses: actions/setup-dotnet@v2
+#        with:
+#          dotnet-version: '7.0.101'
+#          
+
+#
+#      - name: Build Solution
+#        run: |
+#          cd D:\\a\\Rubeus\\Rubeus &&
+#          dotnet build --configuration Release -p:SolutionFileName=Confuser2.sln
+#          
