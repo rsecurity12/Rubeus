@@ -16,6 +16,11 @@ jobs:
         with:
            repository: rsecurity12/InvisibilityCloak
 
+      - name: Debug Information
+        run: |
+          Get-ChildItem -Recurse
+          Get-Location
+          
       - name: Upload Artifacts
         uses: actions/upload-artifact@v2
         with:
