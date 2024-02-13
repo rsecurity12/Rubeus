@@ -55,14 +55,14 @@ jobs:
           Get-ChildItem -Recurse
           Get-Location
           
-#      - name: Build
-#        run: |
-#          dotnet build --configuration Release
+      - name: Build
+        run: |
+          dotnet build --configuration Release
 
-#      - name: Debug Information
-#        run: |
-#          Get-ChildItem -Recurse
-#          Get-Location
+      - name: Debug Information
+        run: |
+          Get-ChildItem -Recurse
+          Get-Location
 
 
 
