@@ -1,0 +1,51 @@
+name: rubeusBuilder
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build_and_release:
+    runs-on: windows-2019
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Set up .NET 7
+        uses: actions/setup-dotnet@v2
+        with:
+          dotnet-version: '7.0.101'
+
+      - name: Restore and Build
+        run: |
+          nuget restore
+          dotnet build --configuration Release
+
+      - name: Debug Information
+        run: |
+          Get-ChildItem -Recurse
+          Get-Location
+
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: Rubeus
+          release_name: Rubeus 
+          draft: false
+          prerelease: false
+
+      - name: Upload Release Asset
+        id: upload_asset
+        uses: actions/upload-release-asset@v1.0.2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: "D:\\a\\Rubeus\\Rubeus\\Rubeus\\bin\\Release\\Rubeus.exe"
+          asset_name: Rubeus.exe
+          asset_content_type: application/octet-stream
