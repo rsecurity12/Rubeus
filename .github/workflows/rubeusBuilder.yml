@@ -83,12 +83,8 @@ jobs:
         with:
           python-version: 3.11  
 
-      - name: Test InvisibilityCloak
-        run: |
-          python D:\\a\\Rubeus\\Rubeus\\InvisibilityCloak.py
-
       - name: Run InvisibilityCloak
-        run: |
+        run: |                                                      # You can change the flag to run another encoding method 
           python D:\\a\\Rubeus\\Rubeus\\InvisibilityCloak.py -d D:\\a\\Rubeus\\Rubeus -n "InvisibilityCloakRubeus" -m base64
           
       - name: Build
@@ -153,10 +149,10 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: rubeus-artifacts
-          
-      - name: Create a .crproj file
+         
+      - name: Create a .crproj file             # You can alter the .crproj file to meet your requirements
         run: |
-          $xml = @'
+          $xml = @'                                   
             <project outputDir="D:\\a\\Rubeus\\Rubeus\\Confused" baseDir="D:\\a\\Rubeus\\Rubeus" xmlns="http://confuser.codeplex.com">
                 <module path="Rubeus.exe">
                     <rule pattern="true" preset="maximum" inherit="false">
@@ -164,7 +160,7 @@ jobs:
                       <protection id="anti dump" />
                       <protection id="anti ildasm" />
                       <protection id="anti tamper" />
-                      <protection id="constants" />
+                      <protection id="constants" />  
                       <protection id="ctrl flow" />
                       <protection id="harden" />
                       <protection id="invalid metadata" />
@@ -178,11 +174,8 @@ jobs:
              </project>
           '@
           Add-Content -Path "project.crproj" -Value $xml -Encoding UTF8
-          
-      - name: Check crproj content
-        run: Get-Content -Path "D:\\a\\Rubeus\\Rubeus\\project.crproj"
 
-      - name: Create ConfuserEXRubeus
+      - name: Create ConfuserEXRubeus                 # -n flag means auto confirm 
         run:  D:\\a\\Rubeus\\Rubeus\\Confuser.CLI.exe -n D:\\a\\Rubeus\\Rubeus\\project.crproj
 
       - name: Create Release
@@ -268,7 +261,7 @@ jobs:
         with:
           name: invisibilitycloakRubeus-artifacts
           
-      - name: Create a .crproj file
+      - name: Create a .crproj file                     # You can alter the .crproj file to meet your requirements
         run: |
           $xml = @'
             <project outputDir="D:\\a\\Rubeus\\Rubeus\\Confused" baseDir="D:\\a\\Rubeus\\Rubeus" xmlns="http://confuser.codeplex.com">
@@ -292,11 +285,8 @@ jobs:
              </project>
           '@
           Add-Content -Path "project.crproj" -Value $xml -Encoding UTF8
-          
-      - name: Check crproj content
-        run: Get-Content -Path "D:\\a\\Rubeus\\Rubeus\\project.crproj"
 
-      - name: Create InvisibilityCloakConfuserEXRubeus
+      - name: Create InvisibilityCloakConfuserEXRubeus      # -n flag means auto confirm 
         run:  D:\\a\\Rubeus\\Rubeus\\Confuser.CLI.exe -n D:\\a\\Rubeus\\Rubeus\\project.crproj
 
       - name: Create Release
