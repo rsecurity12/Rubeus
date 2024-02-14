@@ -15,8 +15,21 @@ jobs:
         with:
            repository: rsecurity12/ConfuserEx
 
-      - name: Test ConfuserEx
-        run:  D:\\a\\Rubeus\\Rubeus\\Confuser.CLI.exe
+#      - name: Test ConfuserEx
+#        run:  D:\\a\\Rubeus\\Rubeus\\Confuser.CLI.exe
+
+      - uses: actions/checkout@v3
+      - name: Create .crproj file
+        uses: Mudlet/xmlstarlet-action@master
+        with:
+          args: |
+            ed -i '1d' --insert '1 <project outputDir="C:\\Users\\Rodrigo\\Desktop\\Rubeus\\Confused" baseDir="C:\\Users\\Rodrigo\\Desktop\\Rubeus" xmlns="http://confuser.codeplex.com">\n' project.crproj
+            fo //project
+              ed -i 'a <module path="Rubeus.exe"/>'
+              fo module
+                ed -i 'a <rule pattern="true" preset="maximum" inherit="false"/>'
+                fo rule
+                  ed -i 'a <protection id="anti debug"/>\n<protection id="anti dump"/>\n<protection id="anti ildasm"/>\n...'
 
       - name: Debug Information
         run: |
