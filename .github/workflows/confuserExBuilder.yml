@@ -20,16 +20,31 @@ jobs:
 
       - uses: actions/checkout@v3
       - name: Create .crproj file
-        uses: Mudlet/xmlstarlet-action@master
-        with:
-          args: |
-            ed -i '1d' --insert '1 <project outputDir="C:\\Users\\Rodrigo\\Desktop\\Rubeus\\Confused" baseDir="C:\\Users\\Rodrigo\\Desktop\\Rubeus" xmlns="http://confuser.codeplex.com">\n' project.crproj
-            fo //project
-              ed -i 'a <module path="Rubeus.exe"/>'
-              fo module
-                ed -i 'a <rule pattern="true" preset="maximum" inherit="false"/>'
-                fo rule
-                  ed -i 'a <protection id="anti debug"/>\n<protection id="anti dump"/>\n<protection id="anti ildasm"/>\n...'
+        run: |
+          $outputDir = "C:\Users\Rodrigo\Desktop\Rubeus\Confused"
+          $baseDir = "C:\Users\Rodrigo\Desktop\Rubeus"
+          $xml = @'
+            <project outputDir="$outputDir" baseDir="$baseDir" xmlns="http://confuser.codeplex.com">
+              <module path="Rubeus.exe">
+                <rule pattern="true" preset="maximum" inherit="false">
+                    <protection id="anti debug" />
+                    <protection id="anti dump" />
+                    <protection id="anti ildasm" />
+                    <protection id="anti tamper" />
+                    <protection id="constants" />
+                    <protection id="ctrl flow" />
+                    <protection id="harden" />
+                    <protection id="invalid metadata" />
+                    <protection id="ref proxy" />
+                    <protection id="resources" />
+                    <protection id="typescramble" />
+                    <protection id="rename" />
+                    <protection id="watermark" />
+                  </rule>
+              </module>
+            </project>
+          '@
+          Add-Content -Path "project.crproj" -Value $xml -Encoding UTF8
 
       - name: Debug Information
         run: |
