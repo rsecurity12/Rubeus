@@ -41,10 +41,10 @@ jobs:
         with:
           name: rubeus-artifacts
           
-      - name: Create .crproj file
+      - name: Create a .crproj file
         run: |
-          $outputDir="D:\\a\\Rubeus\\Rubeus\\Rubeus\\bin\\Release"
-          $baseDir="D:\\a\\Rubeus\\Rubeus\\Rubeus\\bin\\Release"
+          $outputDir="D:\\a\\Rubeus\\Rubeus"
+          $baseDir="D:\\a\\Rubeus\\Rubeus"
           $malware="Rubeus.exe"
           $xml = @'
             <project outputDir="$outputDir\\Confused" baseDir="$baseDir" xmlns="http://confuser.codeplex.com">
@@ -68,6 +68,10 @@ jobs:
              </project>
           '@
           Add-Content -Path "project.crproj" -Value $xml -Encoding UTF8
+          
+      - name: Create ConfuserEXRubeus
+        run: |
+          Confuser.CLI.exe D:\\a\\Rubeus\\Rubeus\\project.crproj
 
       - name: Debug Information
         run: |
