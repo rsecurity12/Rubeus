@@ -147,7 +147,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: invisibilitycloakRubeus-artifacts
-          path: "D:\\a\\Rubeus\\Rubeus\\InvisibilityCloakRubeus\bin\\Release\\InvisibilityCloakRubeus.exe"
+          path: "D:\\a\\Rubeus\\Rubeus\\InvisibilityCloakRubeus\\bin\\Release\\InvisibilityCloakRubeus.exe"
   
       - name: Checkout ConfuserEx
         uses: actions/checkout@v2
