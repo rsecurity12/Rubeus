@@ -6,43 +6,57 @@ on:
       - '*'
   
 jobs:
-  build_and_release:
+  build_and_release_ConfuserEXRubeus:
     runs-on: windows-2019
+    steps:   
+   # ---------- Build & release Clean Rubeus version ----------  
+      - name: Checkout Rubeus
+        uses: actions/checkout@v2
+        with:
+           repository: rsecurity12/Rubeus
 
-    steps:
+      - name: Set up .NET 7
+        uses: actions/setup-dotnet@v2
+        with:
+          dotnet-version: '7.0.101'
+
+      - name: Restore and Build
+        run: |
+          nuget restore
+          dotnet build --configuration Release
+          
+# ---------- Build & release ConfuserEXRubeus version ----------  
       - name: Checkout ConfuserEx
         uses: actions/checkout@v2
         with:
            repository: rsecurity12/ConfuserEx
-
-#      - name: Test ConfuserEx
-#        run:  D:\\a\\Rubeus\\Rubeus\\Confuser.CLI.exe
 
       - uses: actions/checkout@v3
       - name: Create .crproj file
         run: |
           $outputDir = "C:\Users\Rodrigo\Desktop\Rubeus\Confused"
           $baseDir = "C:\Users\Rodrigo\Desktop\Rubeus"
+          $malware ="InvisibilityCloakRubeus.exe"
           $xml = @'
             <project outputDir="$outputDir" baseDir="$baseDir" xmlns="http://confuser.codeplex.com">
-              <module path="Rubeus.exe">
-                <rule pattern="true" preset="maximum" inherit="false">
-                    <protection id="anti debug" />
-                    <protection id="anti dump" />
-                    <protection id="anti ildasm" />
-                    <protection id="anti tamper" />
-                    <protection id="constants" />
-                    <protection id="ctrl flow" />
-                    <protection id="harden" />
-                    <protection id="invalid metadata" />
-                    <protection id="ref proxy" />
-                    <protection id="resources" />
-                    <protection id="typescramble" />
-                    <protection id="rename" />
-                    <protection id="watermark" />
+                <module path="$malware">
+                    <rule pattern="true" preset="maximum" inherit="false">
+                      <protection id="anti debug" />
+                      <protection id="anti dump" />
+                      <protection id="anti ildasm" />
+                      <protection id="anti tamper" />
+                      <protection id="constants" />
+                      <protection id="ctrl flow" />
+                      <protection id="harden" />
+                      <protection id="invalid metadata" />
+                      <protection id="ref proxy" />
+                      <protection id="resources" />
+                      <protection id="typescramble" />
+                      <protection id="rename" />
+                      <protection id="watermark" />
                   </rule>
-              </module>
-            </project>
+                </module>
+             </project>
           '@
           Add-Content -Path "project.crproj" -Value $xml -Encoding UTF8
 
@@ -51,22 +65,7 @@ jobs:
           Get-ChildItem -Recurse
           Get-Location
 
-#    steps:
-#    
-#      - name: Checkout ConfuserEx
-#        uses: actions/checkout@v2
-#        with:
-#           repository: rsecurity12/confuserEx
-#           
-#      - name: Set up .NET 7
-#        uses: actions/setup-dotnet@v2
-#        with:
-#          dotnet-version: '7.0.101'
-#          
+#      - name: Test ConfuserEx
+#        run:  D:\\a\\Rubeus\\Rubeus\\Confuser.CLI.exe
 
-#
-#      - name: Build Solution
-#        run: |
-#          cd D:\\a\\Rubeus\\Rubeus &&
-#          dotnet build --configuration Release -p:SolutionFileName=Confuser2.sln
-#          
+
