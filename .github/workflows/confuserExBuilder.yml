@@ -41,14 +41,16 @@ jobs:
         with:
           name: rubeus-artifacts
           
+      - name: Debug Information
+        run: |
+          Get-ChildItem -Recurse
+          Get-Location
+          
       - name: Create a .crproj file
         run: |
-          $outputDir="D:\\a\\Rubeus\\Rubeus\\Confused"
-          $baseDir="D:\\a\\Rubeus\\Rubeus"
-          $malware="Rubeus.exe"
           $xml = @'
-            <project outputDir="$outputDir" baseDir="$baseDir" xmlns="http://confuser.codeplex.com">
-                <module path="$malware">
+            <project outputDir="D:\\a\\Rubeus\\Rubeus\\Confused" baseDir="D:\\a\\Rubeus\\Rubeus" xmlns="http://confuser.codeplex.com">
+                <module path="Rubeus.exe">
                     <rule pattern="true" preset="maximum" inherit="false">
                       <protection id="anti debug" />
                       <protection id="anti dump" />
@@ -75,10 +77,7 @@ jobs:
       - name: Create ConfuserEXRubeus
         run:  D:\\a\\Rubeus\\Rubeus\\Confuser.CLI.exe D:\\a\\Rubeus\\Rubeus\\project.crproj
 
-      - name: Debug Information
-        run: |
-          Get-ChildItem -Recurse
-          Get-Location
+
 
 #      - name: Test ConfuserEx
 #        run:  D:\\a\\Rubeus\\Rubeus\\Confuser.CLI.exe
