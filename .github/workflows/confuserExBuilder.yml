@@ -20,10 +20,15 @@ jobs:
         with:
           dotnet-version: '7.0.101'
 
-      - name: Restore and Build
+      - name: Build
         run: |
-          nuget restore
           dotnet build --configuration Release
+
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: rubeus-artifacts
+          path: "D:\\a\\Rubeus\\Rubeus\\Rubeus\\bin\\Release\\Rubeus.exe"
           
 # ---------- Build & release ConfuserEXRubeus version ----------  
       - name: Checkout ConfuserEx
@@ -31,14 +36,19 @@ jobs:
         with:
            repository: rsecurity12/ConfuserEx
 
+      - name: Download Artifacts
+        uses: actions/download-artifact@v2
+        with:
+          name: rubeus-artifacts
+
       - uses: actions/checkout@v3
       - name: Create .crproj file
         run: |
-          $outputDir = "C:\Users\Rodrigo\Desktop\Rubeus\Confused"
-          $baseDir = "C:\Users\Rodrigo\Desktop\Rubeus"
+          $outputDir = "D:\\a\\Rubeus\\Rubeus" D:\a\Rubeus\Rubeus\Rubeus\bin\Release\
+          $baseDir = "D:\\a\\Rubeus\\Rubeus"
           $malware ="InvisibilityCloakRubeus.exe"
           $xml = @'
-            <project outputDir="$outputDir" baseDir="$baseDir" xmlns="http://confuser.codeplex.com">
+            <project outputDir="$outputDir\\Confused" baseDir="$baseDir" xmlns="http://confuser.codeplex.com">
                 <module path="$malware">
                     <rule pattern="true" preset="maximum" inherit="false">
                       <protection id="anti debug" />
