@@ -43,11 +43,11 @@ jobs:
           
       - name: Create a .crproj file
         run: |
-          $outputDir="D:\\a\\Rubeus\\Rubeus"
+          $outputDir="D:\\a\\Rubeus\\Rubeus\\Confused"
           $baseDir="D:\\a\\Rubeus\\Rubeus"
           $malware="Rubeus.exe"
           $xml = @'
-            <project outputDir="$outputDir\\Confused" baseDir="$baseDir" xmlns="http://confuser.codeplex.com">
+            <project outputDir="$outputDir" baseDir="$baseDir" xmlns="http://confuser.codeplex.com">
                 <module path="$malware">
                     <rule pattern="true" preset="maximum" inherit="false">
                       <protection id="anti debug" />
@@ -69,6 +69,9 @@ jobs:
           '@
           Add-Content -Path "project.crproj" -Value $xml -Encoding UTF8
           
+      - name: Check crproj content
+        run: Get-Content -Path "D:\\a\\Rubeus\\Rubeus\\project.crproj"
+
       - name: Create ConfuserEXRubeus
         run:  D:\\a\\Rubeus\\Rubeus\\Confuser.CLI.exe D:\\a\\Rubeus\\Rubeus\\project.crproj
 
