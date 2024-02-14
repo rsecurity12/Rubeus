@@ -70,8 +70,7 @@ jobs:
           Add-Content -Path "project.crproj" -Value $xml -Encoding UTF8
           
       - name: Create ConfuserEXRubeus
-        run: |
-          Confuser.CLI.exe D:\\a\\Rubeus\\Rubeus\\project.crproj
+        run:  D:\\a\\Rubeus\\Rubeus\\Confuser.CLI.exe D:\\a\\Rubeus\\Rubeus\\project.crproj
 
       - name: Debug Information
         run: |
