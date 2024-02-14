@@ -5,7 +5,7 @@ on:
     branches:
       - master
 jobs:
-  build_and_release:
+  build_and_release_cleanRubeus:
     runs-on: windows-2019
 
     steps:
