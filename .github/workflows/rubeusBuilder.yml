@@ -1,6 +1,6 @@
 ######################################### SECTION 1 ################################################
 # This section will build and release a clean version of Rubeus
-name: rubeusBuilder
+name: CleanRubeus
 on:
   push:
     branches:
@@ -48,7 +48,7 @@ jobs:
 
 ######################################### SECTION 2 ###############################################
 # This section will build and release an obfuscated version of Rubeus using InvisibilityCloak
-  build_and_release_invisibilityCloakRubeus:
+  invisibilityCloakRubeus:
     runs-on: windows-2019
 
     steps:
@@ -120,7 +120,7 @@ jobs:
           
 ######################################### SECTION 3 ###############################################
 # This section will build and release an obfuscated version of Rubeus using ConfuserEX
-  build_and_release_ConfuserEXRubeus:
+  ConfuserExRubeus:
     runs-on: windows-2019
     
     steps:   
@@ -210,7 +210,7 @@ jobs:
 
 ######################################### SECTION 4 ###############################################
 # This section will build and release an obfuscated version of Rubeus first using InvisibilityCloak and then ConfuserEX
-  build_and_release_InvisibilityCloakConfuserEXRubeus:
+  InvisibilityCloakConfuserExRubeus:
     runs-on: windows-2019
     steps:  
       - name: Checkout InvisibilityCloak
