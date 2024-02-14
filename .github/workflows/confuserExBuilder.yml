@@ -77,9 +77,26 @@ jobs:
       - name: Create ConfuserEXRubeus
         run:  D:\\a\\Rubeus\\Rubeus\\Confuser.CLI.exe -n D:\\a\\Rubeus\\Rubeus\\project.crproj
 
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ConfuserExRubeus
+          release_name: ConfuserExRubeus
+          draft: false
+          prerelease: false
 
-
-#      - name: Test ConfuserEx
-#        run:  D:\\a\\Rubeus\\Rubeus\\Confuser.CLI.exe
+      - name: Upload Release Asset
+        id: upload_asset
+        uses: actions/upload-release-asset@v1.0.2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: "D:\\a\\Rubeus\\Rubeus\\Confused\\Rubeus.exe"
+          asset_name: ConfuserExRubeus.exe
+          asset_content_type: application/octet-stream
 
 
