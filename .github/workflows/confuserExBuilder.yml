@@ -44,9 +44,9 @@ jobs:
       - uses: actions/checkout@v3
       - name: Create .crproj file
         run: |
-          $outputDir = "D:\\a\\Rubeus\\Rubeus" D:\a\Rubeus\Rubeus\Rubeus\bin\Release\
-          $baseDir = "D:\\a\\Rubeus\\Rubeus"
-          $malware ="InvisibilityCloakRubeus.exe"
+          $outputDir="D:\\a\\Rubeus\\Rubeus\\Rubeus\\bin\\Release"
+          $baseDir="D:\\a\\Rubeus\\Rubeus\\Rubeus\\bin\\Release"
+          $malware="Rubeus.exe"
           $xml = @'
             <project outputDir="$outputDir\\Confused" baseDir="$baseDir" xmlns="http://confuser.codeplex.com">
                 <module path="$malware">
