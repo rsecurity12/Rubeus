@@ -75,7 +75,7 @@ jobs:
         run: Get-Content -Path "D:\\a\\Rubeus\\Rubeus\\project.crproj"
 
       - name: Create ConfuserEXRubeus
-        run:  D:\\a\\Rubeus\\Rubeus\\Confuser.CLI.exe D:\\a\\Rubeus\\Rubeus\\project.crproj
+        run:  D:\\a\\Rubeus\\Rubeus\\Confuser.CLI.exe -n D:\\a\\Rubeus\\Rubeus\\project.crproj
 
 
 
