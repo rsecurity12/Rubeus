@@ -212,7 +212,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          upload_url: ${{ steps.create_release_InvisibilityCloakConfuserEXRubeus.outputs.upload_url }}
           asset_path: "D:\\a\\Rubeus\\Rubeus\\Confused\\InvisibilityCloakRubeus.exe"
           asset_name: InvisibilityCloakConfuserEXRubeus.exe
           asset_content_type: application/octet-stream
