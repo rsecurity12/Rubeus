@@ -5,8 +5,33 @@ on:
   workflow_dispatch:
     inputs:
       repositoryName:
-        description: "Choose repository to build"
+        description: "The repository to checkout from"
+        required: true
         default: "rsecurity12/Rubeus"
+      projectdir:
+        description: 'The directory of the project'
+        required: true
+      toolname:
+        description: 'Name of your new tool'
+        required: true
+        default: 'Obfuscated'
+      invisibilitycloak:
+        type: boolean
+        default: true
+        description: InvisibilityCloak
+      confuserex:
+        type: boolean
+        description: ConfuserEx
+      filescanio:
+        type: boolean
+        description: 'FileScan.IO'
+      method:
+        type: choice
+        description: 'InvisibilityCloak obfuscation method'
+        options:
+        - base64
+        - rot13
+        - reverse
 
 jobs:
     obfuscationBuilder:
