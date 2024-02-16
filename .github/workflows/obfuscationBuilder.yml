@@ -85,7 +85,7 @@ jobs:
         
         - name: Run InvisibilityCloak
           run: |                                                      # You can change the flag to run another encoding method 
-            python ${{ projectdir }}\\InvisibilityCloak.py -d ${{ projectdir }} -n ${{ toolname }} -m  ${{ invisibilityCloak_encodingMethod }}
+            python $"{{ projectdir }}"\\InvisibilityCloak.py -d $"{{ projectdir }}" -n $"{{ toolname }}" -m  $"{{ invisibilityCloak_encodingMethod }}"
 
         - name: Build
           run: |
