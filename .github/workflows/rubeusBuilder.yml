@@ -13,12 +13,13 @@ jobs:
        runs-on: windows-2019
        
        steps:
-         - name: Checkout Repository
-           uses: actions/checkout@v2
-           with:
+        - name: Checkout repository to build
+          uses: actions/checkout@v2
+          with:
               repository: "${{ github.event.inputs.name }}"
-           
-         - name: Set up .NET 7
-           uses: actions/setup-dotnet@v2
-           with:
-              dotnet-version: '7.0.101'
+              ref: master
+                      
+        - name: Set up .NET 7
+          uses: actions/setup-dotnet@v2
+          with:
+             dotnet-version: '7.0.101'
