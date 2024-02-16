@@ -68,14 +68,10 @@ jobs:
              repository: "${{ github.event.inputs.redteamRepositoryName }}"
 
         - name: Obfuscating Rubeus
+          if: "contains(github.event.inputs.redteamRepositoryName, 'Rubeus')" 
           uses: actions/setup-dotnet@v2
-          if: ${{ redteamRepositoryName.Rubeus }}
           with:
             dotnet-version: '7.0.101'
-
-
-
-
             
         - name: Debug information
           run: Get-ChildItem .
