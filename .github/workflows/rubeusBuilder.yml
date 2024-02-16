@@ -4,7 +4,7 @@ name: obfuscationBuilder
 on:
   workflow_dispatch:
     inputs:
-      name:
+      repositoryName:
         description: "Choose repository to build"
         default: "rsecurity12/Rubeus"
 
@@ -16,7 +16,7 @@ jobs:
         - name: Checkout repository to build
           uses: actions/checkout@v2
           with:
-              repository: "${{ github.event.inputs.name }}"
+              repository: "${{ github.event.inputs.repositoryName }}"
               ref: master
                       
         - name: Set up .NET 7
