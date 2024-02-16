@@ -50,8 +50,9 @@ jobs:
             repository: ${{ inputs.repository }}
             ref: master
           
-# -------------------- Build and release InvisibilityCloak --------------------
-        - name: '[InvisibilityCloak] Run' 
-          if: ${{ inputs.invisibilitycloak }}
-      run: |
-        python obfuscation-repo/InvisibilityCloak/InvisibilityCloak.py -d 'target-repo/${{ inputs.projectdir }}' -n '${{ inputs.toolname }}' -m ${{ inputs.method }}
+# # -------------------- Build and release InvisibilityCloak --------------------
+#         - name: '[InvisibilityCloak] Run' 
+#          if: ${{ inputs.invisibilitycloak }}
+#            run: |
+#               python obfuscation-repo/InvisibilityCloak/InvisibilityCloak.py -d 'target-repo/${{ inputs.projectdir }}' -n '${{ inputs.toolname }}' -m ${{ inputs.method }}
+######  
