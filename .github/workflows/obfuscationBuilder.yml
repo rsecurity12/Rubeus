@@ -1,0 +1,57 @@
+######################################### SECTION 1 ################################################
+# This section will define the vaviables for GitHub actions
+name: obfuscationBuilder
+on:
+  workflow_dispatch:
+    inputs:
+      repositoryName:
+        description: "The repository to checkout from"
+        required: true
+        default: "rsecurity12/Rubeus"
+      projectdir:
+        description: 'The directory of the project'
+        required: true
+      toolname:
+        description: 'Name of your new tool'
+        required: true
+        default: 'Obfuscated'
+      invisibilitycloak:
+        type: boolean
+        default: true
+        description: InvisibilityCloak
+      confuserex:
+        type: boolean
+        description: ConfuserEx
+      filescanio:
+        type: boolean
+        description: 'FileScan.IO'
+      invisbilityCloak_encodingMethod:
+        type: choice
+        description: 'InvisibilityCloak obfuscation method'
+        options:
+        - base64
+        - rot13
+        - reverse
+
+# -------------------- Setup repositories --------------------
+jobs:
+    obfuscationBuilder:
+       runs-on: windows-2019
+       steps:
+        - name: Checkout obfuscation repository
+          uses: actions/checkout@v2
+          with:
+            ref: master
+            repository: "${{ github.event.inputs.repositoryName }}"
+              
+        - name: Checkout target repository
+          uses: actions/checkout@v2
+          with:
+            repository: ${{ inputs.repository }}
+            ref: master
+          
+# -------------------- Build and release InvisibilityCloak --------------------
+        - name: '[InvisibilityCloak] Run' 
+          if: ${{ inputs.invisibilitycloak }}
+      run: |
+        python obfuscation-repo/InvisibilityCloak/InvisibilityCloak.py -d 'target-repo/${{ inputs.projectdir }}' -n '${{ inputs.toolname }}' -m ${{ inputs.method }}
