@@ -5,8 +5,8 @@ on:
   workflow_dispatch:
     inputs:
       name:
-        description: "Choose Malware to build"
-        default: "none"
+        description: "Choose repository to build"
+        default: "rsecurity12/Rubeus"
 
 jobs:
     obfuscationBuilder:
