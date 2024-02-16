@@ -44,12 +44,18 @@ jobs:
             ref: master
             repository: "${{ github.event.inputs.repositoryName }}"
               
-        - name: Checkout target repository
-          uses: actions/checkout@v2
+
+# -------------------- Obfuscation with invisibilityCloak --------------------   
+        - name: Upload Artifacts
+          uses: actions/upload-artifact@v2
           with:
-            repository: ${{ inputs.repository }}
-            ref: master
-          
+            name: invisibilitycloak-artifacts
+            path: "${{ github.event.inputs.projectdir }}\\InvisibilityCloak.py"
+
+
+
+
+
 # # -------------------- Build and release InvisibilityCloak --------------------
 #         - name: '[InvisibilityCloak] Run' 
 #          if: ${{ inputs.invisibilitycloak }}
