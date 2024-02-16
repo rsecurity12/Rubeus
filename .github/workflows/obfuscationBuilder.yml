@@ -45,15 +45,15 @@ jobs:
             repository: "${{ github.event.inputs.repositoryName }}"
 
 # -------------------- Obfuscation with invisibilityCloak --------------------   
-        - name: Debug information
-          run: Get-ChildItem .
-        
         - name: Upload Artifacts
           uses: actions/upload-artifact@v2
           with:
             name: invisibilitycloak-artifacts
             path: "${{ github.event.inputs.projectdir }}\\InvisibilityCloak.py"
-
+            
+        - name: Debug information
+          run: Get-ChildItem .
+        
 
 
 
