@@ -8,6 +8,12 @@ on:
         description: "Type the obfuscator repository"
         required: true
         default: "rsecurity12/invisibilityCloak"
+        
+      optionalObfuscatorRepositoryName:
+        description: "Type a second obfuscator repository"
+        required: false
+        default: "rsecurity12/invisibilityCloak"
+        
       redteamRepositoryName:
         description: "Type the RedTeam repository to obfuscate"
         required: true
