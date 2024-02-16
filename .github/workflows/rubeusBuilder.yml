@@ -3,17 +3,21 @@
 name: obfuscationBuilder
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - master
-jobs:
-  CleanRubeus:
-    runs-on: windows-2019
+    inputs:
+      name:
+        description: "Choose Malware to build"
+        default: "none"
 
+jobs:
+    obfuscationBuilder:
+       runs-on: windows-2019
+       
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v2
-
+        with:
+           repository: "${{ github.event.inputs.name }}"
+   
       - name: Set up .NET 7
         uses: actions/setup-dotnet@v2
         with:
