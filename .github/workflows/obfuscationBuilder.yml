@@ -42,7 +42,7 @@ jobs:
     obfuscationBuilder:
        runs-on: windows-2019
        steps:
-        - name: Checkout obfuscation repository
+        - name: Checkout obfuscator repository
           uses: actions/checkout@v2
           with:
             ref: master
