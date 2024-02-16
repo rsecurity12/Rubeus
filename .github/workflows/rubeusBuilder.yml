@@ -1,5 +1,5 @@
 ######################################### SECTION 1 ################################################
-# This section will build and release a clean version of Rubeus
+# This section will define the vaviables for GitHub actions
 name: obfuscationBuilder
 on:
   workflow_dispatch:
@@ -33,18 +33,25 @@ on:
         - rot13
         - reverse
 
+# -------------------- Setup repositories --------------------
 jobs:
     obfuscationBuilder:
        runs-on: windows-2019
-       
        steps:
-        - name: Checkout repository to build
+        - name: Checkout obfuscation repository
           uses: actions/checkout@v2
           with:
-              repository: "${{ github.event.inputs.repositoryName }}"
-              ref: master
-                      
-        - name: Set up .NET 7
-          uses: actions/setup-dotnet@v2
+            ref: master
+            repository: "${{ github.event.inputs.repositoryName }}"
+              
+        - name: Checkout target repository
+          uses: actions/checkout@v2
           with:
-             dotnet-version: '7.0.101'
+            repository: ${{ inputs.repository }}
+            ref: master
+          
+# -------------------- Build and release InvisibilityCloak --------------------
+        - name: '[InvisibilityCloak] Run' 
+          if: ${{ inputs.invisibilitycloak }}
+      run: |
+        python obfuscation-repo/InvisibilityCloak/InvisibilityCloak.py -d 'target-repo/${{ inputs.projectdir }}' -n '${{ inputs.toolname }}' -m ${{ inputs.method }}
