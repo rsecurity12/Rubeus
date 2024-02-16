@@ -71,7 +71,7 @@ jobs:
           if: "contains(github.event.inputs.redteamRepositoryName, 'Rubeus')" 
           uses: actions/setup-dotnet@v2
           with:
-            dotnet-version: '7.0.101'
+            dotnet-version: '7.0.101'  ## USE DOTNET 4 to build
             
         - name: Debug information
           run: Get-ChildItem .
