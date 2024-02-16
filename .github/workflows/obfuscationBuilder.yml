@@ -67,7 +67,7 @@ jobs:
           with:
              repository: "${{ github.event.inputs.redteamRepositoryName }}"
 
-        - name: Obfuscating Rubeus
+        - name: Set up .NET 7
           if: "contains(github.event.inputs.redteamRepositoryName, 'Rubeus')" 
           uses: actions/setup-dotnet@v2
           with:
@@ -84,8 +84,8 @@ jobs:
             python-version: 3.11  
         
         - name: Run InvisibilityCloak
-          run: |                                                      # You can change the flag to run another encoding method 
-            python $"{{ projectdir }}"\\InvisibilityCloak.py -d $"{{ projectdir }}" -n $"{{ toolname }}" -m  $"{{ invisibilityCloak_encodingMethod }}"
+          run: |                                                     
+            python "${{ github.event.inputs.projectdir }}\\InvisibilityCloak.py" -d "${{ github.event.inputs.projectdir }}" -n $"{{ toolname }}" -m  $"{{ invisibilityCloak_encodingMethod }}"
 
         - name: Build
           run: |
