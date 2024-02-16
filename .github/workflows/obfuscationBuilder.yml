@@ -12,15 +12,17 @@ on:
       optionalObfuscatorRepositoryName:
         description: "Type a second obfuscator repository"
         required: false
-        default: "rsecurity12/invisibilityCloak"
+        default: "rsecurity12/confuserEx"
         
       redteamRepositoryName:
         description: "Type the RedTeam repository to obfuscate"
         required: true
         default: "rsecurity12/Rubeus"
+        
       projectdir:
         description: 'Type the directory of the project'
         required: true
+        
       toolname:
         description: 'Type the name of your new tool'
         required: true
