@@ -25,7 +25,7 @@ on:
       filescanio:
         type: boolean
         description: 'FileScan.IO'
-      method:
+      invisbilityCloak_encodingMethod:
         type: choice
         description: 'InvisibilityCloak obfuscation method'
         options:
