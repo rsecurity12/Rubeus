@@ -37,7 +37,7 @@ on:
 #      filescanio:
 #        type: boolean
 #        description: 'FileScan.IO'
-      invisbilityCloak_encodingMethod:
+      invisibilityCloak_encodingMethod:
         type: choice
         description: 'InvisibilityCloak obfuscation method'
         options:
@@ -72,11 +72,27 @@ jobs:
           uses: actions/setup-dotnet@v2
           with:
             dotnet-version: '7.0.101'  ## USE DOTNET 4 to build
-            
+
+        - name: Download Artifacts
+          uses: actions/download-artifact@v2
+          with:
+            name: invisibilitycloak-artifacts
+
+        - name: Set up Python
+          uses: actions/setup-python@v2
+          with:
+            python-version: 3.11  
+        
+        - name: Run InvisibilityCloak
+          run: |                                                      # You can change the flag to run another encoding method 
+            python ${{ projectdir }}\\InvisibilityCloak.py -d ${{ projectdir }} -n ${{ toolname }} -m  ${{ invisibilityCloak_encodingMethod }}
+
+        - name: Build
+          run: |
+            dotnet build --configuration Release
+
         - name: Debug information
           run: Get-ChildItem .
-        
-
 
 
 
