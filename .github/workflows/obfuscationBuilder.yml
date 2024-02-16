@@ -4,27 +4,31 @@ name: obfuscationBuilder
 on:
   workflow_dispatch:
     inputs:
-      repositoryName:
-        description: "The repository to checkout from"
+      obfuscatorRepositoryName:
+        description: "Type the obfuscator repository"
+        required: true
+        default: "rsecurity12/invisibilityCloak"
+      redteamRepositoryName:
+        description: "Type the RedTeam repository to obfuscate"
         required: true
         default: "rsecurity12/Rubeus"
       projectdir:
-        description: 'The directory of the project'
+        description: 'Type the directory of the project'
         required: true
       toolname:
-        description: 'Name of your new tool'
+        description: 'Type the name of your new tool'
         required: true
         default: 'Obfuscated'
-      invisibilitycloak:
-        type: boolean
-        default: true
-        description: InvisibilityCloak
-      confuserex:
-        type: boolean
-        description: ConfuserEx
-      filescanio:
-        type: boolean
-        description: 'FileScan.IO'
+#      invisibilitycloak:
+#        type: boolean
+#        default: true
+#        description: InvisibilityCloak
+#      confuserex:
+#        type: boolean
+#        description: ConfuserEx
+#      filescanio:
+#        type: boolean
+#        description: 'FileScan.IO'
       invisbilityCloak_encodingMethod:
         type: choice
         description: 'InvisibilityCloak obfuscation method'
@@ -42,14 +46,14 @@ jobs:
           uses: actions/checkout@v2
           with:
             ref: master
-            repository: "${{ github.event.inputs.repositoryName }}"
+            repository: "${{ github.event.inputs.obfuscatorRepositoryName }}"
 
 # -------------------- Obfuscation with invisibilityCloak --------------------   
         - name: Upload Artifacts
           uses: actions/upload-artifact@v2
           with:
             name: invisibilitycloak-artifacts
-            path: "${{ github.event.inputs.projectdir }}InvisibilityCloak.py"
+            path: "${{ github.event.inputs.projectdir }}\\InvisibilityCloak.py"
             
         - name: Debug information
           run: Get-ChildItem .
