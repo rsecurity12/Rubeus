@@ -61,6 +61,11 @@ jobs:
           with:
             name: invisibilitycloak-artifacts
             path: "${{ github.event.inputs.projectdir }}\\InvisibilityCloak.py"
+
+        - name: Checkout Redtool to obfuscate
+          uses: actions/checkout@v2
+          with:
+             repository: "${{ github.event.inputs.redteamRepositoryName }}"
             
         - name: Debug information
           run: Get-ChildItem .
