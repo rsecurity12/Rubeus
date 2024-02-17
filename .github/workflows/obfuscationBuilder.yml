@@ -52,7 +52,7 @@ on:
       projectdir:
         description: "Type the project's directory"
         required: true
-        default: "For example: 'D:\\a\\Rubeus\\Rubeus'"
+        default: "For example: D:\\a\\Rubeus\\Rubeus"
 
 # -------------------- New tool's name --------------------
       toolname:
@@ -66,7 +66,7 @@ jobs:
        runs-on: windows-2019
        steps:
         - name: Checkout invisibilitycloak
-          if: ${{ github.event.inputs.invisibilitycloak == 'true' }}
+          if: "${{ github.event.inputs.invisibilitycloak == 'true' }}"
           uses: actions/checkout@v2
           with:
             repository: rsecurity12/InvisibilityCloak
