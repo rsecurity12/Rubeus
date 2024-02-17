@@ -80,7 +80,7 @@ jobs:
 
 # -------------------- Build clean Rubeus --------------------
         - name: Checkout Rubeus
-          if: "  if: ${{ !github.event.inputs.invisibilitycloak && !github.event.inputs.confuserEx && github.event.inputs.Rubeus }}"
+          if: "${{ !github.event.inputs.invisibilitycloak && !github.event.inputs.confuserEx && github.event.inputs.Rubeus }}"
           uses: actions/checkout@v2
           with:
             repository: rsecurity12/Rubeus
@@ -95,7 +95,7 @@ jobs:
             dotnet build --configuration Release
 
         - name: Create Release
-          if: "${{ github.event.inputs.invisibilityCloak == 'false' && github.event.inputs.ConfuserEx == 'false' }}"
+          if: "${{ !github.event.inputs.invisibilitycloak && !github.event.inputs.confuserEx }}"
           id: create_clean_release
           uses: actions/create-release@v1
           env:
@@ -107,15 +107,15 @@ jobs:
             prerelease: false
 
         - name: Upload Release Asset
-          if: "${{ github.event.inputs.ConfuserEx == 'false' }}"
+          if: "${{ !github.event.inputs.invisibilitycloak && !github.event.inputs.confuserEx }}"
           id: upload_clean_asset
           uses: actions/upload-release-asset@v1.0.2
           env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           with:
             upload_url: ${{ steps.create__clean_release.outputs.upload_url }}
-            asset_path: "${{ github.event.inputs.projectdir }}\\${{ github.event.inputs.toolname }}\\obj\\Release\\${{ github.event.inputs.toolname }}.exe"
-            asset_name: "${{ github.event.inputs.toolname }}.exe"
+            asset_path: "${{ github.event.inputs.projectdir }}\\Rubeus\\\bin\\Release\\Rubeus.exe"
+            asset_name: "Rubeus.exe"
             asset_content_type: application/octet-stream
 
 # -------------------- Build invisibilityCloak Rubeus --------------------
