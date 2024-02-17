@@ -4,7 +4,7 @@ name: obfuscationBuilder
 on:
   workflow_dispatch:
     inputs:
-    
+ # -------------------- Obfuscating methods --------------------   
       invisibilitycloak:
         description: 'Obfuscator: InvisibilityCloak'
         type: boolean
@@ -13,31 +13,7 @@ on:
         type: boolean
         default: true
         description: 'Obfuscator: ConfuserEx' 
-        
-      Rubeus:
-        description: "RedTeam tool: Rubeus"
-        type: boolean
-        required: true
-        default: false
-        
-      projectdir:
-        description: 'Type the directory of the project'
-        required: true
-        
-      toolname:
-        description: 'Type the name of your new tool'
-        required: true
-        default: 'Obfuscated'
-#      invisibilitycloak:
-#        type: boolean
-#        default: true
-#        description: InvisibilityCloak
-#      confuserex:
-#        type: boolean
-#        description: ConfuserEx
-#      filescanio:
-#        type: boolean
-#        description: 'FileScan.IO'
+
       invisibilityCloak_encodingMethod:
         type: choice
         description: 'InvisibilityCloak obfuscation method'
@@ -45,6 +21,45 @@ on:
         - base64
         - rot13
         - reverse
+
+ # -------------------- RedTeam tools to obfuscate -------------------- 
+      Rubeus:
+        description: "RedTeam tool: Rubeus"
+        type: boolean
+        required: false
+        default: false
+        
+      SharpHound:
+        description: "RedTeam tool: SharpHound"
+        type: boolean
+        required: false
+        default: false
+
+      SharpLDAPSearch:
+        description: "RedTeam tool: SharpLDAPSearch"
+        type: boolean
+        required: false
+        default: false
+
+      SharpUp:
+        description: "RedTeam tool: SharpUp"
+        type: boolean
+        required: false
+        default: false
+
+ # -------------------- Project directory --------------------
+      projectdir:
+        description: "Type the project's directory"
+        required: true
+        default: "For example: D:\\a\\Rubeus\\Rubeus"
+
+# -------------------- New tool's name --------------------
+      toolname:
+        description: 'Type the name of your new tool'
+        required: true
+        default: 'Obfuscated'
+
+
 
 # -------------------- Setup repositories --------------------
 jobs:
