@@ -5,16 +5,17 @@ on:
   workflow_dispatch:
     inputs:
       invisibilitycloak:
+        description: Use InvisibilityCloak to obfuscate a RedTeam tool
         type: boolean
         default: true
-        description: InvisibilityCloak
+        
         
       confuserEx:
         type: boolean
         default: true
-        description: confuserEx
+        description:  Use ConfuserEx to obfuscate a RedTeam tool
         
-      redteamRepositoryName:
+      Rubeus:
         description: "Type the RedTeam repository to obfuscate"
         required: true
         default: "rsecurity12/Rubeus"
