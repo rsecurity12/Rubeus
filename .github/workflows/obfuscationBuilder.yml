@@ -61,10 +61,6 @@ on:
         default: 'Obfuscated'
 
 # -------------------- Tag name & release name --------------------
-      tag_name:
-        description: 'Type the tag name'
-        required: true
-
       release_name:
         description: 'Type the release name'
         required: true
@@ -128,7 +124,6 @@ jobs:
           env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           with:
-            tag_name: "${{ github.event.inputs.tag_name }}"
             release_name: "${{ github.event.inputs.release_name }}"
             draft: false
             prerelease: false
