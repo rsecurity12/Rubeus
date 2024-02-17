@@ -64,6 +64,7 @@ on:
       release_name:
         description: 'Type the release name'
         required: true
+        default: 'clean_version'
 
 
 # -------------------- General setup --------------------
@@ -79,7 +80,7 @@ jobs:
 
 # -------------------- Build clean Rubeus --------------------
         - name: Checkout Rubeus
-          if: "${{ github.event.inputs.invisibilitycloak == 'false' && github.event.inputs.confuserEx == 'false && github.event.inputs.Rubeus == 'true'  }}"
+          if: "${{ github.event.inputs.invisibilitycloak == false && github.event.inputs.confuserEx == false && github.event.inputs.Rubeus == true  }}"
           uses: actions/checkout@v2
           with:
             repository: rsecurity12/Rubeus
