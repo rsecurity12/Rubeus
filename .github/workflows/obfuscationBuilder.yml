@@ -80,7 +80,7 @@ jobs:
 
 # -------------------- Build clean Rubeus --------------------
         - name: Checkout Rubeus
-          if: "${{ github.event.inputs.invisibilitycloak == false && github.event.inputs.confuserEx == false && github.event.inputs.Rubeus == true  }}"
+          if: "  if: ${{ !github.event.inputs.invisibilitycloak && !github.event.inputs.confuserEx && github.event.inputs.Rubeus }}"
           uses: actions/checkout@v2
           with:
             repository: rsecurity12/Rubeus
