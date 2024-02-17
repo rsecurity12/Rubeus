@@ -9,6 +9,7 @@ on:
         description: 'Obfuscator: InvisibilityCloak'
         type: boolean
         default: true        
+        
       confuserEx:
         type: boolean
         default: true
@@ -18,9 +19,9 @@ on:
         type: choice
         description: 'InvisibilityCloak obfuscation method'
         options:
-        - base64
-        - rot13
-        - reverse
+          - base64
+          - rot13
+          - reverse
 
  # -------------------- RedTeam tools to obfuscate -------------------- 
       Rubeus:
@@ -51,7 +52,7 @@ on:
       projectdir:
         description: "Type the project's directory"
         required: true
-        default: "For example: D:\\a\\Rubeus\\Rubeus"
+        default: "For example: 'D:\\a\\Rubeus\\Rubeus'"
 
 # -------------------- New tool's name --------------------
       toolname:
@@ -59,32 +60,31 @@ on:
         required: true
         default: 'Obfuscated'
 
-
-
 # -------------------- Setup repositories --------------------
 jobs:
     obfuscationBuilder:
        runs-on: windows-2019
        steps:
-        - name: Checkout obfuscator repository
+        - name: Checkout invisibilitycloak
           uses: actions/checkout@v2
           with:
-            repository: "${{ github.event.inputs.obfuscatorRepositoryName }}"
+            if: ${{ github.event.inputs.invisibilitycloak == 'true' }}
+            repository: rsecurity12/InvisibilityCloak
 
-# -------------------- Obfuscating Rubeus with invisibilityCloak and/or ConfuserEx --------------------   
+# -------------------- Obfuscating Rubeus with invisibilityCloak --------------------   
         - name: Upload Artifacts
           uses: actions/upload-artifact@v2
           with:
             name: invisibilitycloak-artifacts
             path: "${{ github.event.inputs.projectdir }}\\InvisibilityCloak.py"
 
-        - name: Checkout Redtool to obfuscate
+        - name: Checkout Rubeus 
           uses: actions/checkout@v2
           with:
-             repository: "${{ github.event.inputs.redteamRepositoryName }}"
+            if: ${{ github.event.inputs.Rubeus == 'true' }}
+            repository: rsecurity12/Rubeus
 
         - name: Set up .NET 7
-          if: "contains(github.event.inputs.redteamRepositoryName, 'Rubeus')" 
           uses: actions/setup-dotnet@v2
           with:
             dotnet-version: '7.0.101'  ## USE DOTNET 4 to build
