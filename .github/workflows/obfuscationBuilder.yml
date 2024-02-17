@@ -52,7 +52,7 @@ on:
       projectdir:
         description: "Type the project's directory"
         required: true
-        default: "For example: D:\\a\\Rubeus\\Rubeus"
+        default: "D:\\\\a\\\\Rubeus\\\\Rubeus"
 
 # -------------------- New tool's name --------------------
       toolname:
@@ -70,6 +70,10 @@ jobs:
           uses: actions/checkout@v2
           with:
             repository: rsecurity12/InvisibilityCloak
+
+
+######################################### SECTION 1 ################################################
+# This section will define the vaviables for GitHub actions
 
 # -------------------- Obfuscating Rubeus with invisibilityCloak --------------------   
         - name: Upload Artifacts
@@ -109,6 +113,13 @@ jobs:
 
         - name: Debug information
           run: Get-ChildItem .
+          
+# -------------------- Run a second obfuscation layer to Rubeus with ConfuserEx --------------------   
+
+
+
+
+
 
 
 
