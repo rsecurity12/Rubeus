@@ -4,16 +4,15 @@ name: obfuscationBuilder
 on:
   workflow_dispatch:
     inputs:
+    
       invisibilitycloak:
-        description: Use InvisibilityCloak to obfuscate a RedTeam tool
+        description: 'Obfuscator: InvisibilityCloak'
         type: boolean
-        default: true
-        
-        
+        default: true        
       confuserEx:
         type: boolean
         default: true
-        description:  Use ConfuserEx to obfuscate a RedTeam tool
+        description: 'Obfuscator: ConfuserEx' 
         
       Rubeus:
         description: "Type the RedTeam repository to obfuscate"
