@@ -16,6 +16,7 @@ on:
         
       Rubeus:
         description: "RedTeam tool: Rubeus"
+        type: boolean
         required: true
         default: false
         
