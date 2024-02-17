@@ -15,9 +15,9 @@ on:
         description: 'Obfuscator: ConfuserEx' 
         
       Rubeus:
-        description: "Type the RedTeam repository to obfuscate"
+        description: "RedTeam tool: Rubeus"
         required: true
-        default: "rsecurity12/Rubeus"
+        default: false
         
       projectdir:
         description: 'Type the directory of the project'
