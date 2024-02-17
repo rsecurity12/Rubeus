@@ -66,9 +66,9 @@ jobs:
        runs-on: windows-2019
        steps:
         - name: Checkout invisibilitycloak
+          if: ${{ github.event.inputs.invisibilitycloak == 'true' }}
           uses: actions/checkout@v2
           with:
-            if: ${{ github.event.inputs.invisibilitycloak == 'true' }}
             repository: rsecurity12/InvisibilityCloak
 
 # -------------------- Obfuscating Rubeus with invisibilityCloak --------------------   
@@ -79,9 +79,9 @@ jobs:
             path: "${{ github.event.inputs.projectdir }}\\InvisibilityCloak.py"
 
         - name: Checkout Rubeus 
+          if: ${{ github.event.inputs.Rubeus == 'true' }}
           uses: actions/checkout@v2
           with:
-            if: ${{ github.event.inputs.Rubeus == 'true' }}
             repository: rsecurity12/Rubeus
 
         - name: Set up .NET 7
