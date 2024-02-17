@@ -4,15 +4,15 @@ name: obfuscationBuilder
 on:
   workflow_dispatch:
     inputs:
-      obfuscatorRepositoryName:
-        description: "Type the obfuscator repository"
-        required: true
-        default: "rsecurity12/invisibilityCloak"
+      invisibilitycloak:
+        type: boolean
+        default: true
+        description: InvisibilityCloak
         
-      optionalObfuscatorRepositoryName:
-        description: "Type a second obfuscator repository"
-        required: false
-        default: "rsecurity12/confuserEx"
+      confuserEx:
+        type: boolean
+        default: true
+        description: confuserEx
         
       redteamRepositoryName:
         description: "Type the RedTeam repository to obfuscate"
