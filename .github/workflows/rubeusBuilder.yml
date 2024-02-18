@@ -22,31 +22,6 @@ on:
           - base64
           - rot13
           - reverse
-          
-#  -------------------- RedTeam tools to obfuscate -------------------- 
-#      Rubeus:
-#        description: "RedTeam tool: Rubeus"
-#        type: boolean
-#        required: false
-#        default: false
-        
-#      SharpHound:
-#        description: "RedTeam tool: SharpHound"
-#        type: boolean
-#        required: false
-#        default: false
-
- #     SharpLDAPSearch:
- #       description: "RedTeam tool: SharpLDAPSearch"
- #       type: boolean
- #       required: false
- #       default: false
-
-  #    SharpUp:
-  #      description: "RedTeam tool: SharpUp"
-  #      type: boolean
-  #      required: false
-  #      default: false
 
  # -------------------- Project directory --------------------
       projectdir:
@@ -135,7 +110,6 @@ jobs:
             path: "${{ github.event.inputs.projectdir }}\\InvisibilityCloak.py"
 
         - name: Checkout Rubeus 
-          if: "${{ github.event.inputs.Rubeus == 'true' }}"
           uses: actions/checkout@v2
           with:
             repository: rsecurity12/Rubeus
@@ -186,6 +160,37 @@ jobs:
             asset_path: "${{ github.event.inputs.projectdir }}\\${{ github.event.inputs.toolname }}\\obj\\Release\\${{ github.event.inputs.toolname }}.exe"
             asset_name: "${{ github.event.inputs.toolname }}.exe"
             asset_content_type: application/octet-stream
+
+
+          
+#  -------------------- RedTeam tools to obfuscate -------------------- 
+#      Rubeus:
+#        description: "RedTeam tool: Rubeus"
+#        type: boolean
+#        required: false
+#        default: false
+        
+#      SharpHound:
+#        description: "RedTeam tool: SharpHound"
+#        type: boolean
+#        required: false
+#        default: false
+
+ #     SharpLDAPSearch:
+ #       description: "RedTeam tool: SharpLDAPSearch"
+ #       type: boolean
+ #       required: false
+ #       default: false
+
+  #    SharpUp:
+  #      description: "RedTeam tool: SharpUp"
+  #      type: boolean
+  #      required: false
+  #      default: false
+
+
+ #         if: "${{ github.event.inputs.Rubeus == 'true' }}"
+
 
           
 # -------------------- Build ConfuserEx Rubeus -------------------- 
