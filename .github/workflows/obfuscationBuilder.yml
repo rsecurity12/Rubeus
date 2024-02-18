@@ -107,7 +107,7 @@ jobs:
             prerelease: false
 
         - name: Upload Release Asset
-          if: "${{ github.event.inputs.invisibilitycloak  = 'false' && github.event.inputs.confuserEx == 'false' }}"
+          if: "${{ github.event.inputs.invisibilitycloak == 'false' && github.event.inputs.confuserEx == 'false' }}"
           id: upload_clean_asset
           uses: actions/upload-release-asset@v1.0.2
           env:
