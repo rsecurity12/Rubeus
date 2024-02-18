@@ -219,7 +219,7 @@ jobs:
                    </rule>
                  </module>
               </project>
-           '@
+            '@
             Add-Content -Path "project.crproj" -Value $xml -Encoding UTF8
 
        - name: Create ConfuserEXRubeus                 # -n flag means auto confirm 
