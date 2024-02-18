@@ -201,26 +201,26 @@ jobs:
          run: |
           $xml = @'                                   
              <project outputDir="${{ github.event.inputs.projectdir }}\\Rubeus\\Confused" baseDir="${{ github.event.inputs.projectdir }}" xmlns="http://confuser.codeplex.com">
-                 <module path="Rubeus.exe">
-                     <rule pattern="true" preset="maximum" inherit="false">
-                       <protection id="anti debug" />
-                       <protection id="anti dump" />
-                       <protection id="anti ildasm" />
-                       <protection id="anti tamper" />
-                       <protection id="constants" />  
-                       <protection id="ctrl flow" />
-                       <protection id="harden" />
-                       <protection id="invalid metadata" />
-                       <protection id="ref proxy" />
-                       <protection id="resources" />
-                       <protection id="typescramble" />
-                       <protection id="rename" />
-                       <protection id="watermark" />
-                   </rule>
-                 </module>
-              </project>
-            '@
-            Add-Content -Path "project.crproj" -Value $xml -Encoding UTF8
+                <module path="Rubeus.exe">
+                    <rule pattern="true" preset="maximum" inherit="false">
+                      <protection id="anti debug" />
+                      <protection id="anti dump" />
+                      <protection id="anti ildasm" />
+                      <protection id="anti tamper" />
+                      <protection id="constants" />  
+                      <protection id="ctrl flow" />
+                      <protection id="harden" />
+                      <protection id="invalid metadata" />
+                      <protection id="ref proxy" />
+                      <protection id="resources" />
+                      <protection id="typescramble" />
+                      <protection id="rename" />
+                      <protection id="watermark" />
+                  </rule>
+                </module>
+             </project>
+          '@
+          Add-Content -Path "project.crproj" -Value $xml -Encoding UTF8
 
        - name: Create ConfuserEXRubeus                 # -n flag means auto confirm 
          run:  "${{ github.event.inputs.projectdir }}\\Confuser.CLI.exe -n ${{ github.event.inputs.projectdir }}\\project.crproj"
