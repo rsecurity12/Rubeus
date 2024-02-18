@@ -1,5 +1,5 @@
 ######################################### SECTION 1 ################################################
-# This section will define the vaviables for GitHub actions
+# This section will define the inputs for workflow
 name: obfuscationBuilder
 on:
   workflow_dispatch:
@@ -22,7 +22,7 @@ on:
           - base64
           - rot13
           - reverse
-
+          
  # -------------------- RedTeam tools to obfuscate -------------------- 
       Rubeus:
         description: "RedTeam tool: Rubeus"
@@ -69,7 +69,7 @@ on:
 
 
 ######################################### SECTION 2 ################################################
-# This section will define the vaviables for GitHub actions
+# This section will create 4 types of Rubeus: Rubeus, InvisibilityCloakRubeus, ConfuserExRubeus, InvisibilityCloakConfuserExRubeus
 jobs:
     cleanRubeus:
        runs-on: windows-2019
@@ -185,10 +185,16 @@ jobs:
 
           
 # -------------------- Build ConfuserEx Rubeus -------------------- 
-
+    ConfuserExRubeus:
+       runs-on: windows-2019
+       steps:
+        - name: Checkout ConfuserEx
 
 # -------------------- Build invisibilityCloakConfuserEx Rubeus --------------------
-
+    invisibilityCloakConfuserExRubeus:
+       runs-on: windows-2019
+       steps:
+        - name: Checkout ConfuserEx
 
 
 
