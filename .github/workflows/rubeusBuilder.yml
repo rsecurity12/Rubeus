@@ -23,12 +23,12 @@ on:
           - rot13
           - reverse
           
- # -------------------- RedTeam tools to obfuscate -------------------- 
-#      Rubeus:
-#        description: "RedTeam tool: Rubeus"
-#        type: boolean
-#        required: false
-#        default: false
+#  -------------------- RedTeam tools to obfuscate -------------------- 
+      Rubeus:
+        description: "RedTeam tool: Rubeus"
+        type: boolean
+        required: false
+        default: false
         
 #      SharpHound:
 #        description: "RedTeam tool: SharpHound"
@@ -80,7 +80,7 @@ jobs:
        steps:
 # -------------------- Build clean Rubeus --------------------
         - name: Checkout Rubeus
-          if: "${{ github.event.inputs.invisibilitycloak == 'false' && github.event.inputs.confuserEx == 'false' }}"
+          if: "${{ github.event.inputs.invisibilitycloak == 'false' && github.event.inputs.confuserEx == 'false' && github.event.inputs.Rubeus == 'true'  }}"
           uses: actions/checkout@v2
           with:
             repository: rsecurity12/Rubeus
