@@ -243,7 +243,7 @@ jobs:
            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
          with:
            upload_url: ${{ steps.create_release.outputs.upload_url }}
-           asset_path: "${{ github.event.inputs.projectdir }}Rubeus\\\\Confused\\Rubeus.exe"
+           asset_path: "${{ github.event.inputs.projectdir }}Rubeus\\Confused\\Rubeus.exe"
            asset_name: "${{ github.event.inputs.toolname }}.exe"
            asset_content_type: application/octet-stream
 
