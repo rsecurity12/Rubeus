@@ -189,16 +189,16 @@ jobs:
 
           
 # -------------------- Build ConfuserEx Rubeus -------------------- 
-    ConfuserExRubeus:
-       runs-on: windows-2019
-       steps:
-        - name: Checkout ConfuserEx
+#    ConfuserExRubeus:
+#       runs-on: windows-2019
+#       steps:
+#       - name: Checkout ConfuserEx
 
 # -------------------- Build invisibilityCloakConfuserEx Rubeus --------------------
-    invisibilityCloakConfuserExRubeus:
-       runs-on: windows-2019
-       steps:
-        - name: Checkout ConfuserEx
+#    invisibilityCloakConfuserExRubeus:
+#       runs-on: windows-2019
+#       steps:
+ #       - name: Checkout ConfuserEx
 
 
 
