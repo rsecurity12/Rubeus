@@ -113,7 +113,7 @@ jobs:
           env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           with:
-            upload_url: ${{ steps.create__clean_release.outputs.upload_url }}
+            upload_url: ${{ steps.create_clean_release.outputs.upload_url }}
             asset_path: "${{ github.event.inputs.projectdir }}\\Rubeus\\bin\\Release\\Rubeus.exe"
             asset_name: "Rubeus.exe"
             asset_content_type: application/octet-stream
