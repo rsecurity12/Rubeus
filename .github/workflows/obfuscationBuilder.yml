@@ -91,7 +91,7 @@ jobs:
             dotnet build --configuration Release
 
         - name: Create Release
-          if: "${{ !github.event.inputs.invisibilitycloak && !github.event.inputs.confuserEx }}"
+          if: "${{ github.event.inputs.invisibilitycloak == 'false' && github.event.inputs.confuserEx == 'false' }}"
           id: create_clean_release
           uses: actions/create-release@v1
           env:
