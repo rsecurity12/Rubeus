@@ -67,17 +67,13 @@ on:
         default: 'clean_version'
 
 
-# -------------------- General setup --------------------
-jobs:
-    obfuscationBuilder:
-       runs-on: windows-2019
-       steps:
-
-
 
 ######################################### SECTION 2 ################################################
 # This section will define the vaviables for GitHub actions
-
+jobs:
+    cleanRubeus:
+       runs-on: windows-2019
+       steps:
 # -------------------- Build clean Rubeus --------------------
         - name: Checkout Rubeus
           if: "${{ github.event.inputs.invisibilitycloak == 'false' && github.event.inputs.confuserEx == 'false'  && github.event.inputs.Rubeus == 'true' }}"
@@ -113,12 +109,15 @@ jobs:
           env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           with:
-            upload_url: ${{ steps.create_clean_release.outputs.upload_url }}
+            upload_url: "${{ steps.create_clean_release.outputs.upload_url }}"
             asset_path: "${{ github.event.inputs.projectdir }}\\Rubeus\\bin\\Release\\Rubeus.exe"
             asset_name: "Rubeus.exe"
             asset_content_type: application/octet-stream
 
-# -------------------- Build invisibilityCloak Rubeus --------------------
+# -------------------- Build invisibilityCloak Rubeus -------------------
+    invisibilityCloakRubeus:
+       runs-on: windows-2019
+       steps:
         - name: Checkout invisibilitycloak
           if: "${{ github.event.inputs.invisibilitycloak == 'true' }}"
           uses: actions/checkout@v2
