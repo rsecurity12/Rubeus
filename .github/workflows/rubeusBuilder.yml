@@ -285,9 +285,9 @@ jobs:
          python-version: 3.11  
 
      - name: Run InvisibilityCloak
-       run: |
-         "python ${{ github.event.inputs.projectdir }}\\InvisibilityCloak.py" -d "${{ github.event.inputs.projectdir }}" -n "${{ github.event.inputs.toolname }}" -m  "${{ github.event.inputs.invisibilityCloak_encodingMethod }}"
-          
+       run: |                                                     
+         python "${{ github.event.inputs.projectdir }}\\InvisibilityCloak.py" -d "${{ github.event.inputs.projectdir }}" -n "${{ github.event.inputs.toolname }}" -m  "${{ github.event.inputs.invisibilityCloak_encodingMethod }}"
+        
      - name: Build
        run: |
           dotnet build --configuration Release
