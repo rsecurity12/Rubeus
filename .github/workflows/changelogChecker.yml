@@ -30,3 +30,9 @@ jobs:
         all_versions=$(grep -oP '^## \[\K[^\]]+' CHANGELOG.md)
         echo "All Changelog Versions: $all_versions"
       shell: bash
+
+    - name: Read Latest Changelog Version
+      run: |
+        latest_version=$(grep -oP '^## \[\K[^\]]+' CHANGELOG.md | head -n 1)
+        echo "Latest Changelog Version: $latest_version"
+      shell: bash
