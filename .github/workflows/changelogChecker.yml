@@ -24,4 +24,9 @@ jobs:
       run: |
         changelog_content=$(cat CHANGELOG.md)
         echo "$changelog_content"
-    
+
+    - name: Read All Changelog Versions
+      run: |
+        all_versions=$(grep -oP '^## \[\K[^\]]+' CHANGELOG.md)
+        echo "All Changelog Versions: $all_versions"
+      shell: bash
