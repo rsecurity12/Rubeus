@@ -15,22 +15,9 @@ jobs:
       with:
         repository: rsecurity12/Rubeus
 
-    - name: Read Changelog
-      id: read_changelog
+    - name: List items
+      id: list_items
       run: |
-        # Read the contents of changelog.md
-        changelog_content=$(CHANGELOG.md)
+        pwd && ls
 
-        # Extract the latest version using a regular expression
-        latest_version=$(echo "$changelog_content" | grep -oP '^## \K[^\s]+' | head -n 1)
-        
-        # Print the latest version
-        echo "Latest Version: $latest_version"
-
-        # Set the latest version as an output variable
-        echo "::set-output name=latest_version::$latest_version"
     
-    - name: Use the Latest Version
-      run: |
-        # Access the latest version from the previous step's output
-        echo "The latest version is ${{ steps.read_changelog.outputs.latest_version }}"
