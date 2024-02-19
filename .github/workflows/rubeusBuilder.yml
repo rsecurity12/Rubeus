@@ -104,7 +104,6 @@ jobs:
             repository: rsecurity12/InvisibilityCloak
 
         - name: Upload Artifacts
-          if: "${{ github.event.inputs.invisibilitycloak == 'true' && github.event.inputs.confuserEx == 'false' }}"
           uses: actions/upload-artifact@v2
           with:
             name: invisibilitycloak-artifacts
@@ -135,6 +134,7 @@ jobs:
             python "${{ github.event.inputs.projectdir }}\\InvisibilityCloak.py" -d "${{ github.event.inputs.projectdir }}" -n "${{ github.event.inputs.toolname }}" -m  "${{ github.event.inputs.invisibilityCloak_encodingMethod }}"
 
         - name: Build
+          if: "${{ github.event.inputs.invisibilitycloak == 'true' && github.event.inputs.confuserEx == 'false' }}"
           run: |
             dotnet build --configuration Release
 
