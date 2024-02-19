@@ -104,12 +104,14 @@ jobs:
             repository: rsecurity12/InvisibilityCloak
 
         - name: Upload Artifacts
+          if: "${{ github.event.inputs.invisibilitycloak == 'true' && github.event.inputs.confuserEx == 'false' }}"
           uses: actions/upload-artifact@v2
           with:
             name: invisibilitycloak-artifacts
             path: "${{ github.event.inputs.projectdir }}\\InvisibilityCloak.py"
 
-        - name: Checkout Rubeus 
+        - name: Checkout Rubeus
+          if: "${{ github.event.inputs.invisibilitycloak == 'true' && github.event.inputs.confuserEx == 'false' }}"
           uses: actions/checkout@v2
           with:
             repository: rsecurity12/Rubeus
