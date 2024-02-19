@@ -104,6 +104,7 @@ jobs:
             repository: rsecurity12/InvisibilityCloak
 
         - name: Upload Artifacts
+          if: "${{ github.event.inputs.invisibilitycloak == 'true' && github.event.inputs.confuserEx == 'false' }}"
           uses: actions/upload-artifact@v2
           with:
             name: invisibilitycloak-artifacts
