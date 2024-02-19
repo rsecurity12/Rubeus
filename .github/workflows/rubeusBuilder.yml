@@ -62,7 +62,7 @@ jobs:
 
         - name: Check latest version
           id: latest_vesion
-          uses: ./.github/changelogChecker.yml
+          uses: ./.github/workflows/changelogChecker.yml
 
         - name: Use Composite Run Steps
           run: |
