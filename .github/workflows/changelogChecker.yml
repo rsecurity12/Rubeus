@@ -20,4 +20,8 @@ jobs:
       run: |
         pwd && ls
 
+    - name: Read CHANGELOG content
+      run: |
+        changelog_content=$(cat CHANGELOG.md)
+        echo "$changelog_content"
     
