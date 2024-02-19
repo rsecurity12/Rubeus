@@ -17,7 +17,7 @@ jobs:
       id: read_changelog
       run: |
         # Read the contents of changelog.md
-        changelog_content=$(cat changelog.md)
+        changelog_content=$(CHANGELOG.md)
 
         # Extract the latest version using a regular expression
         latest_version=$(echo "$changelog_content" | grep -oP '^## \K[^\s]+' | head -n 1)
