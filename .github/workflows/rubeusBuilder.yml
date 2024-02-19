@@ -97,8 +97,8 @@ jobs:
     invisibilityCloakRubeus:
        runs-on: windows-2019
        steps:
-        - name: Checkout invisibilitycloak
-          if: "${{ github.event.inputs.confuserEx == 'false' }} && ${{ github.event.inputs.invisibilitycloak == 'true' }}"
+        - name: Checkout InvisibilityCloak
+          if: "${{ github.event.inputs.invisibilitycloak == 'true' && github.event.inputs.confuserEx == 'false' }}"
           uses: actions/checkout@v2
           with:
             repository: rsecurity12/InvisibilityCloak
