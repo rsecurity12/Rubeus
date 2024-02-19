@@ -98,7 +98,7 @@ jobs:
        runs-on: windows-2019
        steps:
         - name: Checkout invisibilitycloak
-          if: "${{ github.event.inputs.invisibilitycloak == 'true' }}"
+          if: "${{ github.event.inputs.invisibilitycloak == 'true' }} && ${{ github.event.inputs.confuserEx == 'false' }}"
           uses: actions/checkout@v2
           with:
             repository: rsecurity12/InvisibilityCloak
@@ -131,7 +131,7 @@ jobs:
         
         - name: Run InvisibilityCloak
           run: |                                                     
-            python "${{ github.event.inputs.projectdir }}\\InvisibilityCloak.py" -d "${{ github.event.inputs.projectdir }}" -n "${{ github.event.inputs.toolname }}" -m  "${{ github.event.inputs.invisibilityCloak_encodingMethod }}"
+            python "${{ github.event.inputs.projectdir }}\\InvisibilityCloak.py -d ${{ github.event.inputs.projectdir }} -n ${{ github.event.inputs.toolname }} -m  ${{ github.event.inputs.invisibilityCloak_encodingMethod }}"
 
         - name: Build
           run: |
