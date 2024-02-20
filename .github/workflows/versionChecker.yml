@@ -20,16 +20,13 @@ jobs:
       run: |
         pwd && ls
 
-    - name: Read CHANGELOG content
-      run: |
-        changelog_content=$(cat CHANGELOG.md)
-        echo "$changelog_content"
-
     - name: Read All Changelog Versions
       run: |
         all_versions=$(grep -oP '^## \[\K[^\]]+' CHANGELOG.md)
         echo "All Changelog Versions: $all_versions"
-      shell: bash
+        highest_version=$(echo "$all_versions" | sort -Vr | head -n 1)
+        echo "Highest Changelog Version: $highest_version"
+        shell: bash
 
     - name: Read Latest Changelog Version
       run: |
