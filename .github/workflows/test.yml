@@ -1,0 +1,20 @@
+name: Checkout repository
+
+on:
+  workflow_call:
+    inputs:  
+        repository:
+        required: true 
+
+env:
+  ENVIRONMENT: $${{  github.workspace  }}/${{  inputs.repository  }}
+
+jobs:
+    cleanRubeus:
+       runs-on: windows-2019
+       steps:
+# -------------------- Build clean Rubeus --------------------
+        - name: Checkout Rubeus
+          uses: actions/checkout@v2
+          with:
+            repository: rsecurity12/Rubeus
