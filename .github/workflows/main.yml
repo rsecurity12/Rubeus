@@ -1,6 +1,52 @@
-name: Main workflow
-on: [workflow_dispatch]
+ ######################################### SECTION 1 ################################################
+# This section will define the inputs for workflow
+name: obfuscationBuilder
+on:
+  workflow_dispatch:
+    inputs:
+ # -------------------- Obfuscating methods --------------------   
+      invisibilitycloak:
+        description: 'Obfuscator: InvisibilityCloak'
+        type: boolean
+        default: true        
+        
+      confuserEx:
+        type: boolean
+        default: true
+        description: 'Obfuscator: ConfuserEx' 
+
+      invisibilityCloak_encodingMethod:
+        type: choice
+        description: 'InvisibilityCloak obfuscation method'
+        options:
+          - base64
+          - rot13
+          - reverse
+
+ # -------------------- Project directory --------------------
+      projectdir:
+        description: "Type the project's directory"
+        required: true
+        default: "D:\\\\a\\\\Rubeus\\\\Rubeus"
+
+# -------------------- New tool's name --------------------
+      toolname:
+        description: 'Type the name of your new tool'
+        required: true
+        default: 'Obfuscated'
+
+# -------------------- Tag name & release name --------------------
+      release_name:
+        description: 'Type the release name'
+        required: true
+        default: 'clean_version'
+
+      tag_name:
+        description: 'Type the tag name'
+        required: true
+        default: 'clean_version'
 
 jobs:
-  call-workflow-passing-data:
+  Main:
+    if: "${{ github.event.inputs.invisibilitycloak == 'false' && github.event.inputs.confuserEx == 'false' }}"
     uses: rsecurity12/Rubeus/.github/workflows/cleanRubeus.yml@master
