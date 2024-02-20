@@ -48,4 +48,4 @@ on:
 
 jobs:
   Main:
-    uses: rsecurity12/Rubeus/.github/workflows/cleanRubeus.yml@master
+    uses: rsecurity12/Rubeus/.github/workflows/rubeus.yml@master
