@@ -1,6 +1,6 @@
 ######################################### SECTION 1 ################################################
 # This section will build and release a clean version of Rubeus
-name: CleanRubeus
+name: CleanSharpHound
 on:
   push:
     branches:
