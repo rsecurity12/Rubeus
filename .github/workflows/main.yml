@@ -1,6 +1,6 @@
  ######################################### SECTION 1 ################################################
 # This section will define the inputs for workflow
-name: obfuscationBuilder
+name: Main
 on:
   workflow_dispatch:
     inputs:
