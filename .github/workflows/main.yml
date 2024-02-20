@@ -47,5 +47,17 @@ on:
         default: 'clean_version'
 
 jobs:
-  Main:
+  Rubeus:
+    if: "${{ github.event.inputs.invisibilitycloak == 'true' }}"
     uses: rsecurity12/Rubeus/.github/workflows/rubeus.yml@master
+
+
+  SharpHound:
+    if: "${{ github.event.inputs.invisibilitycloak == 'false' }}"
+    uses: rsecurity12/Rubeus/.github/workflows/rubeus.yml@master
+
+
+
+
+
+    
