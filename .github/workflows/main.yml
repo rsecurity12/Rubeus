@@ -1,1 +1,13 @@
+name: Main Workflow
 
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  cleanSharpHound:
+    runs-on: windows-latest
+    steps:
+      - name: Build clean SharpHound
+        uses: ./.github/workflows/csharp/sharphound.yml
