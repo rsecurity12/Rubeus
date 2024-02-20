@@ -1,8 +1,0 @@
-
-name: SharpHound
-
-runs:
-  using: "composite"
-  steps:
-    - run: echo We jog from composite action
-      shell: bash
