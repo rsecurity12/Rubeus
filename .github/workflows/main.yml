@@ -48,7 +48,7 @@ on:
 
 jobs:
   Rubeus:
-    if: "${{ github.event.inputs.invisibilitycloak == 'true' }}"
+    ### You can use the control flow here to decide if you want to run the Rubeus builder or not
     uses: rsecurity12/Rubeus/.github/workflows/rubeus.yml@master
 
 
