@@ -41,5 +41,8 @@ jobs:
           with:
             name: rubeus-artifacts
 
-
+        - name: Check location
+          run: |
+            pwd
+            ls
 
