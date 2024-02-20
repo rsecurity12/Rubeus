@@ -1,0 +1,12 @@
+name: Print Directory
+
+on:
+  push:
+
+jobs:
+  print-directory:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Print directory
+        run: dir
