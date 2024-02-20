@@ -1,13 +1,14 @@
-name: Main Workflow
-
-on:
-  push:
-    branches:
-      - master
+name: Main workflow
+on: [workflow_dispatch]
 
 jobs:
-  cleanSharpHound:
-    runs-on: windows-latest
-    steps:
-      - name: Build clean SharpHound
-        uses: ./.github/workflows/csharp/sharphound.yml
+  go_run:
+    name: Go run
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash    
+    steps:      
+      - run: echo We warm up
+      
+      - uses: rsecurity12/Rubeus/.github/actions/sharphound@main  
