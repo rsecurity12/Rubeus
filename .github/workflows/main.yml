@@ -2,13 +2,5 @@ name: Main workflow
 on: [workflow_dispatch]
 
 jobs:
-  go_run:
-    name: Go run
-    runs-on: ubuntu-latest
-    defaults:
-      run:
-        shell: bash    
-    steps:      
-      - run: echo We warm up
-      
-      - uses: rsecurity12/Rubeus/.github/workflows/actions/csharp@main
+  call-workflow-passing-data:
+    uses: rsecurity12/Rubeus/.github/workflows/rubeus.yml@master
