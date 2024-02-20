@@ -22,7 +22,7 @@ jobs:
 
     - name: Read All Changelog Versions
       run: |
-        all_versions=$(grep -oP '^## \[\K[^\]]+' CHANGELOG.md)
+        all_versions=$(grep -oP '^## \[\K[^\]]+' version.md)
         echo "All Changelog Versions: $all_versions"
         highest_version=$(echo "$all_versions" | sort -Vr | head -n 1)
         echo "Highest Changelog Version: $highest_version"
@@ -30,6 +30,6 @@ jobs:
 
     - name: Read Latest Changelog Version
       run: |
-        latest_version=$(grep -oP '^## \[\K[^\]]+' CHANGELOG.md | head -n 1)
+        latest_version=$(grep -oP '^## \[\K[^\]]+' version.md | head -n 1)
         echo "Latest Changelog Version: $latest_version"
       shell: bash
