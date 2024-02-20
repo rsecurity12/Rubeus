@@ -11,4 +11,4 @@ jobs:
     steps:      
       - run: echo We warm up
       
-      - uses: rsecurity12/Rubeus/.github/actions/csharp@master
+      - uses: rsecurity12/Rubeus/.github/workflows/actions/csharp@master
