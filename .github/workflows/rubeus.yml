@@ -31,7 +31,9 @@ jobs:
 
 
     upload-to-release:
-      runs-on: ubuntu-latest
+      runs-on: ubuntu-latest 
+      needs:
+      - cleanRubeus
       if: always()  # This ensures the job always runs
       steps:
         - name: Download Artifacts
