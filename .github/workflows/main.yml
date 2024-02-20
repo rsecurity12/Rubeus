@@ -48,5 +48,4 @@ on:
 
 jobs:
   Main:
-    if: "${{ github.event.inputs.invisibilitycloak == 'false' && github.event.inputs.confuserEx == 'false' }}"
     uses: rsecurity12/Rubeus/.github/workflows/cleanRubeus.yml@master
