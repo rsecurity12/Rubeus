@@ -1,0 +1,47 @@
+on:
+  workflow_call:
+
+jobs:
+  build:
+    runs-on: windows-2019
+
+    strategy:
+      matrix:
+        invisibilitycloak: [false, true]
+        confuserEx: [false, true]
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Set up .NET 7
+        uses: actions/setup-dotnet@v2
+        with:
+          dotnet-version: '7.0.101'
+
+      - name: Build
+        run: dotnet build --configuration Release
+
+      - name: Create Release
+        if: "${{ github.event.inputs.invisibilitycloak == 'false' && github.event.inputs.confuserEx == 'false' }}"
+        id: create_clean_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: "${{ github.event.inputs.tag_name }}"
+          release_name: "${{ github.event.inputs.release_name }}"
+          draft: false
+          prerelease: false
+
+      - name: Upload Release Asset
+        if: "${{ github.event.inputs.invisibilitycloak == 'false' && github.event.inputs.confuserEx == 'false' }}"
+        id: upload_clean_asset
+        uses: actions/upload-release-asset@v1.0.2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: "${{ steps.create_clean_release.outputs.upload_url }}"
+          asset_path: "${{ github.event.inputs.projectdir }}\\Rubeus\\bin\\Release\\Rubeus.exe"
+          asset_name: "Rubeus.exe"
+          asset_content_type: application/octet-stream
