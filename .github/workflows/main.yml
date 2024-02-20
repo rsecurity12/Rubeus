@@ -52,12 +52,5 @@ jobs:
     uses: rsecurity12/Rubeus/.github/workflows/rubeus.yml@master
 
 
-  SharpHound:
-    if: "${{ github.event.inputs.invisibilitycloak == 'false' }}"
-    uses: rsecurity12/Rubeus/.github/workflows/rubeus.yml@master
-
-
-
-
 
     
