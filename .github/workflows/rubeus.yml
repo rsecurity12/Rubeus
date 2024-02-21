@@ -179,11 +179,11 @@ jobs:
             name: invisibilityCloakRubeus-artifacts
           continue-on-error: true
 
-        - name: Download invisibilityCloakRubeus Artifacts
+        - name: Download confuserExRubeus Artifacts
           uses: actions/download-artifact@v2
           with:
             name: confuserRubeus-artifacts
-          continue-on-error: true
+         # continue-on-error: true
 
 
         - name: Check location
