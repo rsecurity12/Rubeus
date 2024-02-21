@@ -151,6 +151,12 @@ jobs:
          run: |
             ren "${{ github.event.inputs.projectdir }}\\Rubeus\\Confused\\Rubeus.exe" "${{ github.event.inputs.toolname }}.exe"
 
+       - name: Upload Artifacts
+         uses: actions/upload-artifact@v2
+         with:
+            name: confuserExRubeus-artifacts
+            path: "${{ github.event.inputs.toolname }}.exe"
+
 
 # -------------------- Create release -------------------
     upload-to-release:
@@ -171,6 +177,13 @@ jobs:
           with:
             name: invisibilityCloakRubeus-artifacts
           continue-on-error: true
+
+        - name: Download invisibilityCloakRubeus Artifacts
+          uses: actions/download-artifact@v2
+          with:
+            name: confuserRubeus-artifacts
+          continue-on-error: true
+
 
         - name: Check location
           run: |
