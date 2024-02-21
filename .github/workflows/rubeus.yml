@@ -96,6 +96,7 @@ jobs:
           uses: actions/download-artifact@v2
           with:
             name: cleanRubeus-artifacts
+          continue-on-error: true
 
         - name: Download invisibilityCloakRubeus Artifacts
           uses: actions/download-artifact@v2
