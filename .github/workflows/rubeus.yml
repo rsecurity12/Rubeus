@@ -30,10 +30,60 @@ jobs:
             path: "${{ github.event.inputs.projectdir }}\\Rubeus\\bin\\Release\\Rubeus.exe"
 
 
+# -------------------- Build invisibilityCloak Rubeus -------------------
+    invisibilityCloakRubeus:
+       runs-on: windows-2019
+       steps:
+        - name: Checkout InvisibilityCloak
+          if: "${{ github.event.inputs.invisibilitycloak == 'true' && github.event.inputs.confuserEx == 'false' }}"
+          uses: actions/checkout@v2
+          with:
+            repository: rsecurity12/InvisibilityCloak
+
+        - name: Upload Artifacts
+          if: "${{ github.event.inputs.invisibilitycloak == 'true' && github.event.inputs.confuserEx == 'false' }}"
+          uses: actions/upload-artifact@v2
+          with:
+            name: invisibilitycloak-artifacts
+            path: "${{ github.event.inputs.projectdir }}\\InvisibilityCloak.py"
+
+        - name: Checkout Rubeus
+          if: "${{ github.event.inputs.invisibilitycloak == 'true' && github.event.inputs.confuserEx == 'false' }}"
+          uses: actions/checkout@v2
+          with:
+            repository: rsecurity12/Rubeus
+
+        - name: Set up .NET 7
+          uses: actions/setup-dotnet@v2
+          with:
+            dotnet-version: '7.0.101'  ## USE DOTNET 4 to build
+
+        - name: Download Artifacts
+          uses: actions/download-artifact@v2
+          with:
+            name: invisibilitycloak-artifacts
+
+        - name: Set up Python
+          uses: actions/setup-python@v2
+          with:
+            python-version: 3.11  
+        
+        - name: Run InvisibilityCloak
+          run: |                                                     
+            python "${{ github.event.inputs.projectdir }}\\InvisibilityCloak.py" -d "${{ github.event.inputs.projectdir }}" -n "${{ github.event.inputs.toolname }}" -m  "${{ github.event.inputs.invisibilityCloak_encodingMethod }}"
+
+        - name: Build
+          if: "${{ github.event.inputs.invisibilitycloak == 'true' && github.event.inputs.confuserEx == 'false' }}"
+          run: |
+            dotnet build --configuration Release
+
+
+# -------------------- Create release -------------------
     upload-to-release:
       runs-on: ubuntu-latest 
       needs:
       - cleanRubeus
+      - invisibilityCloakRubeus
       if: always()  # This ensures the job always runs
       steps:
         - name: Download Artifacts
