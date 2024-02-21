@@ -164,6 +164,7 @@ jobs:
       needs:
       - cleanRubeus
       - invisibilityCloakRubeus
+      - ConfuserExRubeus
       if: always()  # This ensures the job always runs
       steps:
         - name: Download cleanRubeus Artifacts
