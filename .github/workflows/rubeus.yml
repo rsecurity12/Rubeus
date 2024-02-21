@@ -26,7 +26,7 @@ jobs:
         - name: Upload Artifacts
           uses: actions/upload-artifact@v2
           with:
-            name: rubeus-artifacts
+            name: cleanRubeus-artifacts
             path: "${{ github.event.inputs.projectdir }}\\Rubeus\\bin\\Release\\Rubeus.exe"
 
 
@@ -77,7 +77,13 @@ jobs:
           run: |
             dotnet build --configuration Release
 
+        - name: Upload Artifacts
+          uses: actions/upload-artifact@v2
+          with:
+            name: invisibilityCloakRubeus-artifacts
+            path: "${{ github.event.inputs.projectdir }}\\${{ github.event.inputs.toolname }}\\obj\\Release\\${{ github.event.inputs.toolname }}.exe"
 
+ 
 # -------------------- Create release -------------------
     upload-to-release:
       runs-on: ubuntu-latest 
@@ -86,10 +92,15 @@ jobs:
       - invisibilityCloakRubeus
       if: always()  # This ensures the job always runs
       steps:
-        - name: Download Artifacts
+        - name: Download cleanRubeus Artifacts
           uses: actions/download-artifact@v2
           with:
-            name: rubeus-artifacts
+            name: cleanRubeus-artifacts
+
+        - name: Download invisibilityCloakRubeus Artifacts
+          uses: actions/download-artifact@v2
+          with:
+            name: invisibilityCloakRubeus-artifacts
 
         - name: Check location
           run: |
