@@ -151,11 +151,13 @@ jobs:
          run: |
             ren "${{ github.event.inputs.projectdir }}\\Rubeus\\Confused\\Rubeus.exe" "${{ github.event.inputs.toolname }}.exe"
 
+
+
        - name: Upload Artifacts
          uses: actions/upload-artifact@v2
          with:
             name: confuserExRubeus-artifacts
-            path: "${{ github.event.inputs.toolname }}.exe"
+            path: "${{ github.event.inputs.projectdir }}\\Rubeus\\Confused\\${{ github.event.inputs.toolname }}.exe"
 
 
 # -------------------- Create release -------------------
