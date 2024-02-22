@@ -58,6 +58,7 @@ jobs:
             repository: rsecurity12/Rubeus
 
         - name: Set up .NET 7
+          if: "${{ github.event.inputs.invisibilitycloak == 'true' && github.event.inputs.confuserEx == 'false' }}"
           uses: actions/setup-dotnet@v2
           with:
             dotnet-version: '7.0.101'  ## USE DOTNET 4 to build
