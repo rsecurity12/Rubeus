@@ -191,12 +191,12 @@ jobs:
             name: confuserExRubeus-artifacts
           continue-on-error: true
 
-        - name: Create Release
+        - name: Create Release (ignore step if already exists)
           env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           run: |       
-            RELEASE_TAG="v1.0.0"
-            RELEASE_NAME=RELEASE_TAG
+            RELEASE_TAG="v1.1"
+            RELEASE_NAME="v0.0.1-Rubeus"
             RELEASE_BODY="Release notes for version $RELEASE_TAG"                       
             assets_dir="/home/runner/work/Rubeus/Rubeus"
             exe_file=$(find "$assets_dir" -name "*.exe" -type f | head -n 1)
@@ -211,8 +211,7 @@ jobs:
             else
                 echo "No .exe file found in the specified directory."
             fi
-
-
+          continue-on-error: true
 
         - name: Check location
           run: |
