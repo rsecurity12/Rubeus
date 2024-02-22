@@ -195,6 +195,45 @@ jobs:
             name: confuserExRubeus-artifacts
           continue-on-error: true
 
+        - name: Create Release for tested versions
+          if: "${{ github.event.inputs.Malware_options == 'Rubeus' }}"
+          env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          run: |
+            RELEASE_TAG="v2"
+            RELEASE_NAME="Tested-Malwares"
+            RELEASE_BODY=$(cat <<EOF
+            
+            **InvisibilityCloak**
+            - Base64 encoded: Malwarev21
+            - ROT13 encoded: Malwarev22
+            - Reverse encoded: Malwarev23
+            
+            **ConfuserEx**
+            - Malwarev3
+            
+            **InvisibilityCloak + ConfuserEx**
+            - Base64 encoded: Malwarev41
+            - ROT13 encoded: Malwarev42
+            - Reverse encoded: Malwarev43
+            EOF
+            )
+    
+            assets_dir="/home/runner/work/Rubeus/Rubeus"
+            exe_file=$(find "$assets_dir" -name "*.exe" -type f | head -n 1)
+            
+            if [ -n "$exe_file" ]; then
+                gh release create "$RELEASE_TAG" \
+                    --title "$RELEASE_NAME" \
+                    --notes "$RELEASE_BODY" \
+                    --generate-notes \
+                    --latest \
+                    "$exe_file"
+            else
+                echo "No .exe file found in the specified directory."
+            fi
+          continue-on-error: true
+          
         - name: Create Release (ignore step if already exists)
           env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
