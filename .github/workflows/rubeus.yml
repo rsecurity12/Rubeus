@@ -167,6 +167,12 @@ jobs:
       - ConfuserExRubeus
       if: always()  # This ensures the job always runs
       steps:
+
+        - name: Checkout Rubeus
+          uses: actions/checkout@v2
+          with:
+            repository: rsecurity12/Rubeus
+      
         - name: Download cleanRubeus Artifacts
           uses: actions/download-artifact@v2
           with:
