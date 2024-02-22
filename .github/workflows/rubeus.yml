@@ -196,7 +196,7 @@ jobs:
           continue-on-error: true
 
         - name: Create Stable Release (ignore step if already exists)
-          if: "${{ github.event.inputs.Malware_options == 'Stable' }}"
+          if: "${{ github.event.inputs.Malware_release == 'Stable' }}"
           env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           run: |
@@ -235,7 +235,7 @@ jobs:
           continue-on-error: true
           
         - name: Create Beta Release (ignore step if already exists)
-          if: "${{ github.event.inputs.Malware_options == 'Beta' }}"
+          if: "${{ github.event.inputs.Malware_release == 'Beta' }}"
           env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           run: |       
@@ -277,7 +277,7 @@ jobs:
           continue-on-error: true
 
         - name: Upload to Beta release 
-          if: "${{ github.event.inputs.Malware_options == 'Beta' }}"
+          if: "${{ github.event.inputs.Malware_release == 'Beta' }}"
           env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           run: |       
