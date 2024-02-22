@@ -235,6 +235,7 @@ jobs:
           continue-on-error: true
           
         - name: Create Beta Release (ignore step if already exists)
+          if: "${{ github.event.inputs.Malware_options == 'Beta' }}"
           env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           run: |       
@@ -276,6 +277,7 @@ jobs:
           continue-on-error: true
 
         - name: Upload to Beta release 
+          if: "${{ github.event.inputs.Malware_options == 'Beta' }}"
           env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           run: |       
