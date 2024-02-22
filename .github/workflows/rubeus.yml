@@ -244,7 +244,7 @@ jobs:
             exe_file=$(find "$assets_dir" -name "*.exe" -type f | head -n 1)
             
             if [ -n "$exe_file" ]; then
-                gh release upload "$RELEASE_TAG" \
+                gh release upload "$RELEASE_TAG" --clobber \
                     "$exe_file"
             else
                 echo "No .exe file found in the specified directory."
