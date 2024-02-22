@@ -55,7 +55,7 @@ on:
       toolname:
         description: 'Type the name of your new tool'
         required: true
-        default: 'Obfuscated'
+        default: 'Rubeusv1'
 
 jobs:
   Rubeus:
