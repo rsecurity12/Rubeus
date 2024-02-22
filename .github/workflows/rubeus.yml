@@ -213,6 +213,27 @@ jobs:
             fi
           continue-on-error: true
 
+        - name: Upload a release 
+          env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          run: |       
+            RELEASE_TAG="v1.2"
+            RELEASE_NAME="v0.0.1-Rubeus"
+            RELEASE_BODY="Release notes for version $RELEASE_TAG"                       
+            assets_dir="/home/runner/work/Rubeus/Rubeus"
+            exe_file=$(find "$assets_dir" -name "*.exe" -type f | head -n 1)
+            
+            if [ -n "$exe_file" ]; then
+                gh release upload "$RELEASE_TAG" \
+                    --title "$RELEASE_NAME" \
+                    --notes "$RELEASE_BODY" \
+                    --generate-notes \
+                    --latest \
+                    "$exe_file"
+            else
+                echo "No .exe file found in the specified directory."
+            fi
+
         - name: Check location
           run: |
             pwd
