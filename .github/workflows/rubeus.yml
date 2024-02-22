@@ -196,7 +196,7 @@ jobs:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           run: |       
             RELEASE_TAG="v1.0.0"
-            RELEASE_NAME="Latest release"
+            RELEASE_NAME=RELEASE_TAG
             RELEASE_BODY="Release notes for version $RELEASE_TAG"                       
             assets_dir="/home/runner/work/Rubeus/Rubeus"
             exe_file=$(find "$assets_dir" -name "*.exe" -type f | head -n 1)
@@ -204,8 +204,10 @@ jobs:
             if [ -n "$exe_file" ]; then
                 gh release create "$RELEASE_TAG" \
                     --title "$RELEASE_NAME" \
+                    --discussion-category "Add your comment" \
                     --notes "$RELEASE_BODY" \
-                    --draft \
+                    --generate-notes \
+                    --latest \
                     "$exe_file"
             else
                 echo "No .exe file found in the specified directory."
