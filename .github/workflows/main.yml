@@ -4,6 +4,28 @@ name: Main
 on:
   workflow_dispatch:
     inputs:
+
+ # -------------------- Malware options --------------------
+      Rubeus:
+        type: boolean
+        default: false
+        description: 'Malware: Rubeus'
+
+      SharpHound:
+        type: boolean
+        default: false
+        description: 'Malware: SharpHound'
+
+      SharpLDPSearch:
+        type: boolean
+        default: false
+        description: 'Malware: SharpLDPSearch'
+
+      SharpUp:
+        type: boolean
+        default: false
+        description: 'Malware: SharpUp'
+    
  # -------------------- Obfuscating methods --------------------   
       invisibilitycloak:
         description: 'Obfuscator: InvisibilityCloak'
@@ -22,7 +44,7 @@ on:
           - base64
           - rot13
           - reverse
-
+           
  # -------------------- Project directory --------------------
       projectdir:
         description: "Type the project's directory"
@@ -34,17 +56,6 @@ on:
         description: 'Type the name of your new tool'
         required: true
         default: 'Obfuscated'
-
-# -------------------- Tag name & release name --------------------
-      release_name:
-        description: 'Type the release name'
-        required: true
-        default: 'clean_version'
-
-      tag_name:
-        description: 'Type the tag name'
-        required: true
-        default: 'clean_version'
 
 jobs:
   Rubeus:
