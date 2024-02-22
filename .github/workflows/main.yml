@@ -19,7 +19,7 @@ on:
  # -------------------- Obfuscating methods --------------------
       Malware_release:
        type: choice
-       description: 'Choose a the malware release'
+       description: 'Choose the malware release'
        required: true
        options:
           - Beta
