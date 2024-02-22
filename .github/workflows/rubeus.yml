@@ -204,7 +204,6 @@ jobs:
             if [ -n "$exe_file" ]; then
                 gh release create "$RELEASE_TAG" \
                     --title "$RELEASE_NAME" \
-                    --discussion-category "Add your comment" \
                     --notes "$RELEASE_BODY" \
                     --generate-notes \
                     --latest \
