@@ -188,20 +188,21 @@ jobs:
         - name: Create Release    
           run: |       
             RELEASE_TAG="v1.0.0"
-            RELEASE_NAME="Release 1.0.0"                       
-            RELEASE_BODY="Release notes for version 1.0.0"       
+            RELEASE_NAME="Latest release"
+            RELEASE_BODY="Release notes for version $RELEASE_TAG"                       
             assets_dir="/home/runner/work/Rubeus/Rubeus"
             exe_file=$(find "$assets_dir" -name "*.exe" -type f | head -n 1)
             
             if [ -n "$exe_file" ]; then
                 gh release create "$RELEASE_TAG" \
                     --title "$RELEASE_NAME" \
-                    -t "$env.GITHUB_TOKEN" \
                     --notes "$RELEASE_BODY" \
-                    --assets "$exe_file"
+                    --draft \
+                    "$exe_file"
             else
                 echo "No .exe file found in the specified directory."
             fi
+
 
 
         - name: Check location
