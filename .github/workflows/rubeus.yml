@@ -195,7 +195,7 @@ jobs:
           env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           run: |       
-            RELEASE_TAG="v1.1"
+            RELEASE_TAG="v1-1"
             RELEASE_NAME="v0.0.1-Rubeus"
             RELEASE_BODY="Release notes for version $RELEASE_TAG"                       
             assets_dir="/home/runner/work/Rubeus/Rubeus"
@@ -217,7 +217,7 @@ jobs:
           env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           run: |       
-            RELEASE_TAG="v1.1"                   
+            RELEASE_TAG="v1-1"                   
             assets_dir="/home/runner/work/Rubeus/Rubeus"
             exe_file=$(find "$assets_dir" -name "*.exe" -type f | head -n 1)
             
