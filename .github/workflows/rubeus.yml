@@ -185,7 +185,9 @@ jobs:
             name: confuserExRubeus-artifacts
           continue-on-error: true
 
-        - name: Create Release    
+        - name: Create Release
+          env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           run: |       
             RELEASE_TAG="v1.0.0"
             RELEASE_NAME="Latest release"
