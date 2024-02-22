@@ -23,11 +23,15 @@ jobs:
           run: |
             dotnet build --configuration Release
 
+        - name: Rename Executable
+          run: |
+            ren "${{ github.event.inputs.projectdir }}\\Rubeus\\bin\\Release\\Rubeus.exe" "${{ github.event.inputs.toolname }}.exe"
+
         - name: Upload Artifacts
           uses: actions/upload-artifact@v2
           with:
             name: cleanRubeus-artifacts
-            path: "${{ github.event.inputs.projectdir }}\\Rubeus\\bin\\Release\\Rubeus.exe"
+            path: "${{ github.event.inputs.projectdir }}\\Rubeus\\bin\\Release\\${{ github.event.inputs.toolname }}.exe"
 
 
 # -------------------- Build invisibilityCloak Rubeus -------------------
