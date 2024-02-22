@@ -16,7 +16,15 @@ on:
           - SharpLDPSearch
           - SharpUp
     
- # -------------------- Obfuscating methods --------------------   
+ # -------------------- Obfuscating methods --------------------
+      Malware_release:
+       type: choice
+       description: 'Choose a malware to build'
+       required: true
+       options:
+          - Beta
+          - Stable
+          
       invisibilitycloak:
         description: 'Obfuscator: InvisibilityCloak'
         type: boolean
