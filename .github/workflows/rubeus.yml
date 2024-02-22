@@ -201,17 +201,24 @@ jobs:
           run: |       
             RELEASE_TAG="v1-1"
             RELEASE_NAME="v0.0.1-Rubeus"
-            RELEASE_BODY="
-                 Rubeusv1.exe   = Clean Rubeus
-                 Rubeusv21.exe  = InvisibilityCloak base64
-                 Rubeusv22.exe  = InvisibilityCloak rot13
-                 Rubeusv23.exe  = InvisibilityCloak reverse
+            RELEASE_BODY=$(cat <<EOF
+                **Clean Rubeus**
+                - Rubeusv1.exe
                 
-                 Rubeusv3.exe   = ConfuserEx 
-
-                Rubeusv41.exe   = InvisibilityCloak ConfuserEx base64
-                Rubeusv42.exe   = InvisibilityCloak ConfuserEx rot13
-                Rubeusv43.exe   = InvisibilityCloak ConfuserEx reverse"
+                **InvisibilityCloak**
+                - Base64 encoded: Rubeusv21.exe
+                - ROT13 encoded: Rubeusv22.exe
+                - Reverse encoded: Rubeusv23.exe
+                
+                **ConfuserEx**
+                - Rubeusv3.exe
+                
+                **InvisibilityCloak + ConfuserEx**
+                - Base64 encoded: Rubeusv41.exe
+                - ROT13 encoded: Rubeusv42.exe
+                - Reverse encoded: Rubeusv43.exe
+                EOF
+                )
     
             assets_dir="/home/runner/work/Rubeus/Rubeus"
             exe_file=$(find "$assets_dir" -name "*.exe" -type f | head -n 1)
@@ -242,6 +249,7 @@ jobs:
             else
                 echo "No .exe file found in the specified directory."
             fi
+          continue-on-error: true
 
         - name: Check location
           run: |
