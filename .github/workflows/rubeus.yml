@@ -203,20 +203,20 @@ jobs:
             RELEASE_NAME="v0.0.1-Rubeus"
             RELEASE_BODY=$(cat <<EOF
             **Clean Rubeus**
-            - Rubeusv1.exe
+            - Rubeusv1
             
             **InvisibilityCloak**
-            - Base64 encoded: Rubeusv21.exe
-            - ROT13 encoded: Rubeusv22.exe
-            - Reverse encoded: Rubeusv23.exe
+            - Base64 encoded: Rubeusv21
+            - ROT13 encoded: Rubeusv22
+            - Reverse encoded: Rubeusv23
             
             **ConfuserEx**
-            - Rubeusv3.exe
+            - Rubeusv3
             
             **InvisibilityCloak + ConfuserEx**
-            - Base64 encoded: Rubeusv41.exe
-            - ROT13 encoded: Rubeusv42.exe
-            - Reverse encoded: Rubeusv43.exe
+            - Base64 encoded: Rubeusv41
+            - ROT13 encoded: Rubeusv42
+            - Reverse encoded: Rubeusv43
             EOF
             )
     
