@@ -199,24 +199,27 @@ jobs:
           env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           run: |       
-            RELEASE_TAG="v1-1"
-            RELEASE_NAME="v0.0.1-Rubeus"
+            RELEASE_TAG="v1"
+            RELEASE_NAME="v0.0.1-Malware"
             RELEASE_BODY=$(cat <<EOF
-            **Clean Rubeus**
-            - Rubeusv1
+            *** Malware Library ***
+            - Here you can build different versions of a malware using the name as its tag.
+            
+            **Clean Malware**
+            - Malwarev1
             
             **InvisibilityCloak**
-            - Base64 encoded: Rubeusv21
-            - ROT13 encoded: Rubeusv22
-            - Reverse encoded: Rubeusv23
+            - Base64 encoded: Malwarev21
+            - ROT13 encoded: Malwarev22
+            - Reverse encoded: Malwarev23
             
             **ConfuserEx**
-            - Rubeusv3
+            - Malwarev3
             
             **InvisibilityCloak + ConfuserEx**
-            - Base64 encoded: Rubeusv41
-            - ROT13 encoded: Rubeusv42
-            - Reverse encoded: Rubeusv43
+            - Base64 encoded: Malwarev41
+            - ROT13 encoded: Malwarev42
+            - Reverse encoded: Malwarev43
             EOF
             )
     
@@ -239,7 +242,7 @@ jobs:
           env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           run: |       
-            RELEASE_TAG="v1-1"                   
+            RELEASE_TAG="v1"                   
             assets_dir="/home/runner/work/Rubeus/Rubeus"
             exe_file=$(find "$assets_dir" -name "*.exe" -type f | head -n 1)
             
@@ -250,9 +253,3 @@ jobs:
                 echo "No .exe file found in the specified directory."
             fi
           continue-on-error: true
-
-        - name: Check location
-          run: |
-            pwd
-            ls
-
