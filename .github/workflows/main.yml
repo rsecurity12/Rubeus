@@ -24,6 +24,15 @@ on:
        options:
           - Beta
           - Stable
+
+      Malware_obfuscation:
+       type: choice
+       description: 'Choose a obfuscation method'
+       required: true
+       options:
+         - Clean
+         - InvisibilityCloak
+         - ConfuserEx
           
       invisibilitycloak:
         description: 'Obfuscator: InvisibilityCloak'
