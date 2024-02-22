@@ -185,6 +185,25 @@ jobs:
             name: confuserExRubeus-artifacts
           continue-on-error: true
 
+        - name: Create Release (if artifacts uploaded)      
+          run: |       
+            RELEASE_TAG="v1.0.0"
+            RELEASE_NAME="Release 1.0.0"                       
+            RELEASE_BODY="Release notes for version 1.0.0"       
+            assets_dir="/home/runner/work/Rubeus/Rubeus"
+            exe_file=$(find "$assets_dir" -name "*.exe" -type f | head -n 1)
+
+            if [ -n "$exe_file" ]; then
+                gh release create "$RELEASE_TAG" \
+                --title "$RELEASE_NAME" \
+                --body "$RELEASE_BODY" \
+                -t "$env.GITHUB_TOKEN" \
+                --notes "Release notes for version $RELEASE_TAG" \
+                --assets "$exe_file"
+             else
+             echo "No .exe file found in the specified directory."
+            fi
+
         - name: Check location
           run: |
             pwd
