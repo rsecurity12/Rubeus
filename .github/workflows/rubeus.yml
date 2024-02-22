@@ -195,13 +195,13 @@ jobs:
             name: confuserExRubeus-artifacts
           continue-on-error: true
 
-        - name: Create Release for tested versions
-          if: "${{ github.event.inputs.Malware_options == 'Rubeus' }}"
+        - name: Create Stable Release (ignore step if already exists)
+          if: "${{ github.event.inputs.Malware_options == 'Stable' }}"
           env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           run: |
-            RELEASE_TAG="v2"
-            RELEASE_NAME="Tested-Malwares"
+            RELEASE_TAG="stable"
+            RELEASE_NAME="Stable-Versions"
             RELEASE_BODY=$(cat <<EOF
             
             **InvisibilityCloak**
@@ -234,11 +234,11 @@ jobs:
             fi
           continue-on-error: true
           
-        - name: Create Release (ignore step if already exists)
+        - name: Create Beta Release (ignore step if already exists)
           env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           run: |       
-            RELEASE_TAG="v1"
+            RELEASE_TAG="Beta"
             RELEASE_NAME="Malware-Library"
             RELEASE_BODY=$(cat <<EOF
             
@@ -275,11 +275,11 @@ jobs:
             fi
           continue-on-error: true
 
-        - name: Upload a release 
+        - name: Upload to Beta release 
           env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           run: |       
-            RELEASE_TAG="v1"                   
+            RELEASE_TAG="Beta"                   
             assets_dir="/home/runner/work/Rubeus/Rubeus"
             exe_file=$(find "$assets_dir" -name "*.exe" -type f | head -n 1)
             
