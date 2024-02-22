@@ -225,10 +225,6 @@ jobs:
             
             if [ -n "$exe_file" ]; then
                 gh release upload "$RELEASE_TAG" \
-                    --title "$RELEASE_NAME" \
-                    --notes "$RELEASE_BODY" \
-                    --generate-notes \
-                    --latest \
                     "$exe_file"
             else
                 echo "No .exe file found in the specified directory."
