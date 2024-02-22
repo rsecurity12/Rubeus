@@ -6,25 +6,15 @@ on:
     inputs:
 
  # -------------------- Malware options --------------------
-      Rubeus:
-        type: boolean
-        default: false
-        description: 'Malware: Rubeus'
-
-      SharpHound:
-        type: boolean
-        default: false
-        description: 'Malware: SharpHound'
-
-      SharpLDPSearch:
-        type: boolean
-        default: false
-        description: 'Malware: SharpLDPSearch'
-
-      SharpUp:
-        type: boolean
-        default: false
-        description: 'Malware: SharpUp'
+      Malware_options:
+      type: choice
+      description: 'Choose a malware to build'
+      required: true
+      options:
+        - Rubeus
+        - SharpHound
+        - SharpLDPSearch
+        - SharpUp
     
  # -------------------- Obfuscating methods --------------------   
       invisibilitycloak:
