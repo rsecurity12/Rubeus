@@ -234,6 +234,23 @@ jobs:
                 echo "No .exe file found in the specified directory."
             fi
           continue-on-error: true
+
+        - name: Upload to Stable release 
+          if: "${{ github.event.inputs.Malware_release == 'Stable' }}"
+          env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          run: |       
+            RELEASE_TAG="Stable"                   
+            assets_dir="/home/runner/work/Rubeus/Rubeus"
+            exe_file=$(find "$assets_dir" -name "*.exe" -type f | head -n 1)
+            
+            if [ -n "$exe_file" ]; then
+                gh release upload "$RELEASE_TAG" --clobber \
+                    "$exe_file"
+            else
+                echo "No .exe file found in the specified directory."
+            fi
+          continue-on-error: true
           
         - name: Create Beta Release (ignore step if already exists)
           if: "${{ github.event.inputs.Malware_release == 'Beta' }}"
