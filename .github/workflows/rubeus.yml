@@ -201,7 +201,18 @@ jobs:
           run: |       
             RELEASE_TAG="v1-1"
             RELEASE_NAME="v0.0.1-Rubeus"
-            RELEASE_BODY="Release notes for version $RELEASE_TAG"                       
+            RELEASE_BODY="
+                 Rubeusv1.exe   = Clean Rubeus
+                 Rubeusv21.exe  = InvisibilityCloak base64
+                 Rubeusv22.exe  = InvisibilityCloak rot13
+                 Rubeusv23.exe  = InvisibilityCloak reverse
+                
+                 Rubeusv3.exe   = ConfuserEx 
+
+                Rubeusv41.exe   = InvisibilityCloak ConfuserEx base64
+                Rubeusv42.exe   = InvisibilityCloak ConfuserEx rot13
+                Rubeusv43.exe   = InvisibilityCloak ConfuserEx reverse"
+    
             assets_dir="/home/runner/work/Rubeus/Rubeus"
             exe_file=$(find "$assets_dir" -name "*.exe" -type f | head -n 1)
             
