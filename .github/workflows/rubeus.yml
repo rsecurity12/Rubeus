@@ -5,7 +5,7 @@ on:  # Specifies the event triggering the workflow
 # This section will create 4 types of Rubeus: Rubeus, InvisibilityCloakRubeus, ConfuserExRubeus, InvisibilityCloakConfuserExRubeus
 jobs:
     cleanRubeus:
-       runs-on: windows-2019
+       runs-on: self-hosted
        steps:
 # -------------------- Build clean Rubeus --------------------
         - name: Checkout Rubeus
