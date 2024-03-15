@@ -100,6 +100,7 @@ jobs:
         - name: Build
           if: "${{ github.event.inputs.invisibilitycloak == 'true' && github.event.inputs.confuserEx == 'false' }}"
           run: |
+            dotnet --info &&
             dotnet build --configuration Release
 
         - name: Upload Artifacts
