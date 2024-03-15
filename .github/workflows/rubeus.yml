@@ -20,6 +20,10 @@ jobs:
           with:
             dotnet-version: '7.0.101'  ## USE DOTNET 4 to build
 
+        - name: Check installed packages
+          run: |
+            Get-WindowsFeature -Name *NET-Framework*
+
         - name: Build
           run: |
             dotnet build --configuration Release
@@ -63,11 +67,6 @@ jobs:
           uses: actions/setup-dotnet@v2
           with:
             dotnet-version: '7.0.101'  ## USE DOTNET 4 to build
-
-        - name: Check installed packages
-          shell: powershell
-          run: |
-            Get-WindowsFeature -Name *NET-Framework*
 
         - name: Download Artifacts
           uses: actions/download-artifact@v2
