@@ -24,11 +24,6 @@ jobs:
           run: |
             Get-WindowsFeature -Name *NET-Framework*
 
-        - name: Install available .NET Framework features
-          run: |
-            Enable-WindowsOptionalFeature -Online -FeatureName "NET-Framework-Core","NET-Framework-45-ASPNET" -Verbose
-
-
         #- name: Install available .NET Framework features
           #run: |
             #Install-WindowsFeature -Name NET-Framework-Features -IncludeAllSubFeature -Verbose
