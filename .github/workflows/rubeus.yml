@@ -24,6 +24,10 @@ jobs:
           run: |
             Get-WindowsFeature -Name *NET-Framework*
 
+        - name: Install available .NET Framework features
+          run: |
+            Install-WindowsFeature -Name NET-Framework-Features -IncludeAllSubFeature -Verbose
+
         - name: Build
           run: |
             dotnet build --configuration Release
