@@ -25,11 +25,10 @@ jobs:
         - name: Build Rubeus solution using MSBuild
           run: |
             & 'C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\MSBuild\Current\Bin\MSBuild.exe' 'C:\actions-runner\_work\Rubeus\Rubeus\Rubeus.sln'
-          #  Start-Process -FilePath 'C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\MSBuild\Current\Bin\MSBuild.exe' -ArgumentList 'C:\actions-runner\_work\Rubeus\Rubeus\Rubeus.sln' -NoNewWindow -Wait
-
+       
         - name: Rename Executable
           run: |
-            ren "${{ github.event.inputs.projectdir }}\\Rubeus\\bin\\Release\\Rubeus.exe" "${{ github.event.inputs.toolname }}.exe"
+            ren "${{ github.event.inputs.projectdir }}\\Rubeus\\bin\\Debug\\Rubeus.exe" "${{ github.event.inputs.toolname }}.exe"
 
         - name: Upload Artifacts
           uses: actions/upload-artifact@v2
