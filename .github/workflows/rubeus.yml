@@ -5,7 +5,7 @@ on:  # Specifies the event triggering the workflow
 # This section will create 4 types of Rubeus: Rubeus, InvisibilityCloakRubeus, ConfuserExRubeus, InvisibilityCloakConfuserExRubeus
 jobs:
     cleanRubeus:
-       runs-on: self-hosted
+       runs-on: Windows10
        steps:
 # -------------------- Build clean Rubeus --------------------
         - name: Checkout Rubeus
@@ -14,11 +14,11 @@ jobs:
           with:
             repository: rsecurity12/Rubeus
 
-#        - name: Set up .NET 7
-#          if: "${{ github.event.inputs.invisibilitycloak == 'false' && github.event.inputs.confuserEx == 'false' }}"
-#          uses: actions/setup-dotnet@v2
-#          with:
-#            dotnet-version: '7.0.101'  ## USE DOTNET 4 to build
+        - name: Set up .NET 7
+          if: "${{ github.event.inputs.invisibilitycloak == 'false' && github.event.inputs.confuserEx == 'false' }}"
+          uses: actions/setup-dotnet@v2
+          with:
+            dotnet-version: '7.0.101'  ## USE DOTNET 4 to build
 
         - name: Check installed packages
           run: |
