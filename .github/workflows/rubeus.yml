@@ -20,9 +20,9 @@ jobs:
           with:
             dotnet-version: '7.0.101'  ## USE DOTNET 4 to build
 
-        - name: Enable execution policy
-          run: |
-            PowerShell.exe -ExecutionPolicy Bypass -Command "Set-ExecutionPolicy -Scope Process Bypass"
+#        - name: Enable execution policy
+#          run: |
+#            PowerShell.exe -ExecutionPolicy Bypass -Command "Set-ExecutionPolicy -Scope Process Bypass"
 
 
 
