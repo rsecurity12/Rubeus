@@ -24,7 +24,7 @@ jobs:
              
         - name: Build Rubeus solution using MSBuild
           run: |
-            'C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\MSBuild\Current\Bin\MSBuild.exe' 'C:\actions-runner\_work\Rubeus\Rubeus'
+            'C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\MSBuild\Current\Bin\MSBuild.exe' 'C:\actions-runner\_work\Rubeus\Rubeus\Rubeus.sln'
 #'C:\actions-runner\_work\Rubeus\Rubeus\Rubeus.sln'
 #        - name: Set up .NET 7
 #          if: "${{ github.event.inputs.invisibilitycloak == 'false' && github.event.inputs.confuserEx == 'false' }}"
