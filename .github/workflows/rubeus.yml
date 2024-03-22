@@ -13,14 +13,6 @@ jobs:
           uses: actions/checkout@v2
           with:
             repository: rsecurity12/Rubeus
-
-        - name: Add C:\actions-runner to Windows Defender exclusion
-          run: |
-            Add-MpPreference -ExclusionPath 'C:\actions-runner' -Force
-#        - name: Enable execution policy
-#           run: |
-#            PowerShell.exe -ExecutionPolicy Bypass -Command "Set-ExecutionPolicy -Scope Process Bypass"
-
             
         - name: Build Rubeus solution using MSBuild
           run: |
