@@ -14,14 +14,14 @@ jobs:
           with:
             repository: rsecurity12/Rubeus
 
-        - name: Enable execution policy
+        - name: Add C:\actions-runner to Windows Defender exclusion
           run: |
-            PowerShell.exe -ExecutionPolicy Bypass -Command "Set-ExecutionPolicy -Scope Process Bypass"
+            Add-MpPreference -ExclusionPath 'C:\actions-runner' -Force
+#        - name: Enable execution policy
+#           run: |
+#            PowerShell.exe -ExecutionPolicy Bypass -Command "Set-ExecutionPolicy -Scope Process Bypass"
 
-        - name: Display files in the location
-          run: |
-             Get-ChildItem 
-             
+            
         - name: Build Rubeus solution using MSBuild
           run: |
             & 'C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\MSBuild\Current\Bin\MSBuild.exe' 'C:\actions-runner\_work\Rubeus\Rubeus\Rubeus.sln'
