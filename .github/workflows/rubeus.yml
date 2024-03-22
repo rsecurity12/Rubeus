@@ -22,7 +22,9 @@ jobs:
 
         - name: Enable execution policy
           run: |
-            Set-ExecutionPolicy -Scope Process Bypass
+            PowerShell.exe -ExecutionPolicy Bypass -Command "Set-ExecutionPolicy -Scope Process Bypass"
+
+
 
 #        - name: Install .NET framework 4.0
 #          run: |
