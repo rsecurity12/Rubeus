@@ -20,9 +20,9 @@ jobs:
           with:
             dotnet-version: '7.0.101'  ## USE DOTNET 4 to build
 
-        - name: Check installed packages
-          run: |
-            Get-WindowsFeature -Name *NET-Framework*
+#        - name: Check installed packages
+#          run: |
+#            Get-WindowsFeature -Name *NET-Framework*
 
 #        - name: Install .NET framework 4.0
 #          run: |
