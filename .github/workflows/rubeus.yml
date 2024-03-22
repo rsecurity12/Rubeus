@@ -24,7 +24,8 @@ jobs:
              
         - name: Build Rubeus solution using MSBuild
           run: |
-            Start-Process -FilePath 'C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\MSBuild\Current\Bin\MSBuild.exe' -ArgumentList 'C:\actions-runner\_work\Rubeus\Rubeus\Rubeus.sln' -NoNewWindow -Wait
+            & 'C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\MSBuild\Current\Bin\MSBuild.exe' 'C:\actions-runner\_work\Rubeus\Rubeus\Rubeus.sln'
+          #  Start-Process -FilePath 'C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\MSBuild\Current\Bin\MSBuild.exe' -ArgumentList 'C:\actions-runner\_work\Rubeus\Rubeus\Rubeus.sln' -NoNewWindow -Wait
 
         - name: Rename Executable
           run: |
