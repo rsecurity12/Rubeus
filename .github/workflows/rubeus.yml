@@ -20,7 +20,7 @@ jobs:
        
         - name: Rename Executable
           run: |
-            ren "${{ github.event.inputs.projectdir }}\\Rubeus\\bin\\Debug\\Rubeus.exe" "${{ github.event.inputs.toolname }}.exe"
+            ren "${{ github.event.inputs.projectdir }}\\bin\\Debug\\Rubeus.exe" "${{ github.event.inputs.toolname }}.exe"
 
         - name: Upload Artifacts
           uses: actions/upload-artifact@v2
