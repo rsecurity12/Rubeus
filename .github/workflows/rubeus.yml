@@ -18,9 +18,13 @@ jobs:
           run: |
             PowerShell.exe -ExecutionPolicy Bypass -Command "Set-ExecutionPolicy -Scope Process Bypass"
 
+        - name: Display files in the location
+          run: |
+             Get-ChildItem 
+             
         - name: Build Rubeus solution using MSBuild
           run: |
-            "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Enterprise\\MSBuild\\Current\\Bin\\MSBuild.exe" "C:\\actions-runner\\_work\\Rubeus\\Rubeus\\Rubeus.sln"
+            'C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\MSBuild\Current\Bin\MSBuild.exe' 'C:\actions-runner\_work\Rubeus\Rubeus\Rubeus.sln'
 
 #        - name: Set up .NET 7
 #          if: "${{ github.event.inputs.invisibilitycloak == 'false' && github.event.inputs.confuserEx == 'false' }}"
